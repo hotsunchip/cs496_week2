@@ -1,8 +1,11 @@
 package com.example.app.activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,10 +15,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.app.APIService;
 import com.example.app.R;
 import com.example.app.adapters.VPAdapter;
 import com.example.app.fragments.Fragment1;
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,9 +30,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import retrofit2.Retrofit;
+
 public class MainActivity extends AppCompatActivity {
-    // constant
+    // constants
     private static final String SERVER = "http://10.0.2.2:3000/";
+    public static final String TAG = "MainActivityLog";
+    public static final String URL = "http://192.249.18.166:80/";
 
     // fields
     private static Context mContext;
@@ -54,9 +64,29 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tab = findViewById(R.id.tab);
         tab.setupWithViewPager(vp);
 
-//        tab.getTabAt(0).setIcon(R.drawable.ic_shops);
-//        tab.getTabAt(1).setIcon(R.drawable.ic_gallery);
-//        tab.getTabAt(2).setIcon(R.drawable.ic_present);
+        tab.getTabAt(0).setIcon(R.drawable.ic_friends);
+        tab.getTabAt(1).setIcon(R.drawable.ic_barcode);
+        tab.getTabAt(2).setIcon(R.drawable.ic_histories);
+    }
+
+    protected void onResume(){
+        super.onResume();
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(ScannerActivity.class);
+        integrator.initiateScan();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Log.d("onActivityResult", "onActivityResult: .");
+        if (resultCode == Activity.RESULT_OK) {
+            IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+            String re = scanResult.getContents();
+            String message = re;
+            Log.d("onActivityResult", "onActivityResult: ." + re);
+            Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+        }
     }
 
     //어플리케이션 종료하는 버튼
