@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Fragment3">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:textSize="@dimen/textContentSize"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/wishList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="28dp"
+                android:padding="4dp"
+                android:text="@string/app_name"
+                android:textColor="@color/green_500"
+                android:textAlignment="center"
+                android:clickable="true"
+                android:textSize="@dimen/textMidSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="8dp"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.widget.Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/imageButton_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_weight="1"
+                android:onClick="btn1Click"
+                android:text="All"
+                android:textSize="@dimen/textSmallSize"
+                android:layout_gravity="center"/>
+<!--                android:textColor="@color/text_color_selector"-->
+<!--                android:background="@drawable/btn_color"-->
+<!--                android:drawableTop="@drawable/ic_laugh" />-->
+
+            <android.widget.Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/imageButton_girls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_weight="1"
+                android:onClick="btn2Click"
+                android:text="Girls"
+                android:textSize="@dimen/textSmallSize"
+                android:layout_gravity="center"/>
+<!--                android:textColor="@color/text_color_selector"-->
+<!--                android:background="@drawable/btn_color"-->
+<!--                android:drawableTop="@drawable/ic_girl" />-->
+
+            <android.widget.Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/imageButton_boys"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_weight="1"
+                android:onClick="btn3Click"
+                android:text="Boys"
+                android:textSize="@dimen/textSmallSize"
+                android:layout_gravity="center"/>
+<!--                android:textColor="@color/text_color_selector"-->
+<!--                android:background="@drawable/btn_color"-->
+<!--                android:drawableTop="@drawable/ic_boy"/>-->
+
+            <android.widget.Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/imageButton_students"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_weight="1"
+                android:onClick="btn4Click"
+                android:text="Students"
+                android:textSize="@dimen/textSmallSize"
+                android:layout_gravity="center"/>
+<!--                android:textColor="@color/text_color_selector"-->
+<!--                android:background="@drawable/btn_color"-->
+<!--                android:drawableTop="@drawable/ic_student" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+<!--            android:background="@drawable/text_linear_bottom"-->
+
+            <TextView
+                android:id="@+id/btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_gravity="center|fill_horizontal"
+                android:layout_weight="1"
+                android:text="1만원 미만"
+                android:textAlignment="center"/>
+<!--                android:textColor="@color/text_selector"-->
+<!--                android:background="@drawable/btn_pushable" />-->
+
+            <TextView
+                android:id="@+id/btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_gravity="center|fill_horizontal"
+                android:layout_weight="1"
+                android:text="1-2만원대"
+                android:textAlignment="center"/>
+<!--                android:background="@drawable/btn_pushable"-->
+<!--                android:textColor="@color/text_selector"/>-->
+
+            <TextView
+                android:id="@+id/btn7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_gravity="center|fill_horizontal"
+                android:layout_weight="1"
+                android:text="3-4만원대"
+                android:textAlignment="center"/>
+<!--                android:background="@drawable/btn_pushable"-->
+<!--                android:textColor="@color/text_selector"/>-->
+
+            <TextView
+                android:id="@+id/btn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:layout_gravity="center|fill_horizontal"
+                android:layout_weight="1"
+                android:text="5만원이상"
+                android:textAlignment="center"/>
+<!--                android:background="@drawable/btn_pushable"-->
+<!--                android:textColor="@color/text_selector"/>-->
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gift_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</FrameLayout>
