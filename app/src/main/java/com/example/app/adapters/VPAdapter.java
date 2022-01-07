@@ -23,9 +23,9 @@ public class VPAdapter extends FragmentPagerAdapter {
         items.add(new Fragment2());
         items.add(new Fragment3());
 
-        itext.add("List");
-        itext.add("Gallery");
-        itext.add("Gift");
+        itext.add("Friends");
+        itext.add("BarCode");
+        itext.add("Histories");
     }
 
     @NonNull

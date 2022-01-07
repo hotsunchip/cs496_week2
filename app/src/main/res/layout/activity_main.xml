@@ -23,11 +23,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_alignParentBottom="true"
-                app:tabIndicatorColor="@color/red_500"
-                app:tabIndicatorGravity="top"
-                app:tabTextColor="@color/red_500"
-                app:tabSelectedTextColor="@color/off_white">
-<!--                app:tabBackground="@drawable/tab_background"-->
+                app:tabIndicator="@null"
+                app:tabTextColor="@color/gray_300"
+                app:tabSelectedTextColor="@color/gray_900"
+                app:tabBackground="@color/gray_000">
 <!--                app:tabIconTint="@color/tab_color_selector"-->
                 <!-- app:tabTextAppearance="@style/TabText">-->
                 <!--            android:background="@color/red_500">-->
@@ -36,19 +35,19 @@
                     android:id="@+id/tab_Item1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_Item1" />
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_Item2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_Item2" />
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_Item3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_Item3" />
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
             </com.google.android.material.tabs.TabLayout>
         </androidx.viewpager.widget.ViewPager>
     </LinearLayout>
