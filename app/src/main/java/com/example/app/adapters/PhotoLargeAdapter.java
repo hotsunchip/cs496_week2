@@ -13,8 +13,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.app.BookInfo;
 import com.example.app.R;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class PhotoLargeAdapter extends RecyclerView.Adapter<PhotoLargeAdapter.ViewHolder> {
@@ -23,12 +26,12 @@ public class PhotoLargeAdapter extends RecyclerView.Adapter<PhotoLargeAdapter.Vi
 //    }
 
     //private OnListItemSelectedInterface mListener;
-    private ArrayList<Uri> mDataset;
+    private ArrayList<BookInfo> mDataset;
     private Context mContext;
 //    private OnListItemSelectedInterface mListener;
     private int mPosition;
 
-    public PhotoLargeAdapter(Context context, ArrayList<Uri> myDataset, int pos) { //, OnListItemSelectedInterface listener, int pos) {
+    public PhotoLargeAdapter(Context context, ArrayList<BookInfo> myDataset, int pos) { //, OnListItemSelectedInterface listener, int pos) {
         mDataset = myDataset;
         mContext = context;
 //        mListener = listener;
@@ -45,11 +48,16 @@ public class PhotoLargeAdapter extends RecyclerView.Adapter<PhotoLargeAdapter.Vi
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Uri photo = mDataset.get(position);
-        Glide.with(mContext)
-            .load(photo)
-            .override(1040, 1040)
-            .into(holder.img_thumb);
+        String photo = mDataset.get(position).getBookImg();
+        try {
+            URL bookImgUrl = new URL(photo);
+            Glide.with(mContext)
+                    .load(bookImgUrl)
+                    .override(1040, 1040)
+                    .into(holder.img_thumb);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         holder.img_thumb.setClipToOutline(true);
 //        Log.e("viewhodler", photo.getPath()
     }
