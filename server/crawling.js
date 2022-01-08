@@ -17,61 +17,73 @@ const getHTML = async (numlink, check) => {
 };
 
 //바코드와 일치하는 책의 링크 받아오기
-const mnd = async (codenum) => {
+const getBook = async (codenum) => {
   let check = "1";
   let html = await getHTML(codenum, check);
   let $ = cheerio.load(html.data);
+
   const blink = $("#searchBiblioList")
     .find("li:nth-child(1) > dl > dt > a")
     .attr("href");
+
   check = "0";
   html = await getHTML(blink, check);
+
   $ = cheerio.load(html.data);
   $("span").remove();
-  $(
-    "#container > div.spot > div.book_info > div.book_info_inner > div:nth-child(2) > a.N\\=a\\:bil\\.publisher"
-  ).remove();
-  const explain = $("#bookIntroContent > p").text();
+
   $bookinfo = $("#container > div.spot > div.book_info");
-  $buylink = $("#productListLayer > ul");
-  // const bookauthor = $bookinfo
-  //   .find("div.book_info_inner > div:nth-child(2)")
-  //   .text();
+  $paylink = $("#productListLayer > ul");
+
+  const title = $bookinfo.find("h2 > a").text();
+  $authorinfo = $(
+    "#container > div.spot > div.book_info > div.book_info_inner > div:nth-child(2)"
+  ).children("a");
+  $authorinfo.each((idx, node) => {
+    if (idx == 0) {
+      author = $(node).text();
+    }
+  });
+  const price = $bookinfo
+    .find("div.book_info_inner > div.price_area > div.lowest > strong")
+    .text();
+  const imgbook = $(
+    "#container > div.spot > div.book_info > div.thumb.type_end > div > a > img"
+  ).attr("src");
+  const review = $("#txt_desc_point > strong:nth-child(2)").text();
+  const payone = $paylink
+    .find("li:nth-child(1) > div > a.N\\=a\\:buy\\.cplist\\,r\\:1\\,i\\:yes24")
+    .attr("href");
+  const paytwo = $paylink
+    .find("li:nth-child(2) > div > a.N\\=a\\:buy\\.cplist\\,r\\:2\\,i\\:kyobo")
+    .attr("href");
+  const paythree = $paylink
+    .find(
+      "li:nth-child(3) > div > a.N\\=a\\:buy\\.cplist\\,r\\:3\\,i\\:aladdin"
+    )
+    .attr("href");
+  const payfour = $paylink
+    .find(
+      "li:nth-child(4) > div > a.N\\=a\\:buy\\.cplist\\,r\\:4\\,i\\:ypbooks"
+    )
+    .attr("href");
+  const aboutbook = $("#bookIntroContent > p").text();
+
   const book = {
-    key: codenum,
-    title: $bookinfo.find("h2 > a").text(),
-    author: $bookinfo.find("div.book_info_inner > div:nth-child(2) > a").text(),
-    price: $bookinfo
-      .find("div.book_info_inner > div.price_area > div.lowest > strong")
-      .text(),
-    point: $("#txt_desc_point > strong:nth-child(2)").text(),
-    blinkfirst: $buylink
-      .find(
-        "li:nth-child(1) > div > a.N\\=a\\:buy\\.cplist\\,r\\:1\\,i\\:yes24"
-      )
-      .attr("href"),
-    blinksecond: $buylink
-      .find(
-        "li:nth-child(2) > div > a.N\\=a\\:buy\\.cplist\\,r\\:2\\,i\\:kyobo"
-      )
-      .attr("href"),
-    blinkthrid: $buylink
-      .find(
-        "li:nth-child(3) > div > a.N\\=a\\:buy\\.cplist\\,r\\:3\\,i\\:aladdin"
-      )
-      .attr("href"),
-    blinkfour: $buylink
-      .find(
-        "li:nth-child(4) > div > a.N\\=a\\:buy\\.cplist\\,r\\:4\\,i\\:ypbooks"
-      )
-      .attr("href"),
-    explain: explain.substring(0, 240),
-    bookimg: $(
-      "#container > div.spot > div.book_info > div.thumb.type_end > div > a > img"
-    ).attr("src"),
+    codenum: codenum,
+    title: title.substring(0, 50),
+    author: author.substring(0, 20),
+    price: price.substring(0, 10),
+    imgbook: imgbook.substring(0, 250),
+    review: review.substring(0, 10),
+    payone: payone.substring(0, 250),
+    paytwo: paytwo.substring(0, 250),
+    paythree: paythree.substring(0, 250),
+    payfour: payfour.substring(0, 250),
+    aboutbook: aboutbook.substring(0, 240) + "...",
   };
+
   const bookCrawling = JSON.stringify(book);
   console.log(bookCrawling);
+  return bookCrawling;
 };
-
-mnd("9788954445290"); //책 바코드

@@ -24,24 +24,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/retrofit", retrofitRouter);
 
-// //Database 구축
-// const mysql = require("mysql");
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "Seankim117!",
-//   database: "madcamp2",
-// });
-
-// connection.connect();
-
-// connection.query("SELECT * from book", (error, rows, fields) => {
-//   if (error) throw error;
-//   console.log("User info is: ", rows);
-// });
-
-// connection.end();
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
