@@ -1,14 +1,9 @@
 package com.example.app.adapters;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import com.example.app.fragments.Fragment1;
-import com.example.app.fragments.Fragment2;
-import com.example.app.fragments.Fragment3;
 
 import java.util.ArrayList;
 
@@ -16,16 +11,13 @@ public class VPAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> items;
     private ArrayList<String> itext = new ArrayList<String>();
 
-    public VPAdapter(@NonNull FragmentManager fm) {
+    public VPAdapter(@NonNull FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);
-        items = new ArrayList<Fragment>();
-        items.add(new Fragment1());
-        items.add(new Fragment2());
-        items.add(new Fragment3());
+        items = fragments;
 
-        itext.add("Friends");
-        itext.add("BarCode");
-        itext.add("Histories");
+//        itext.add("Friends");
+//        itext.add("BarCode");
+//        itext.add("Histories");
     }
 
     @NonNull
@@ -39,9 +31,9 @@ public class VPAdapter extends FragmentPagerAdapter {
         return items.size();
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position){
-        return itext.get(position);
-    }
+//    @Nullable
+//    @Override
+//    public CharSequence getPageTitle(int position){
+//        return itext.get(position);
+//    }
 }

@@ -1,94 +1,95 @@
 package com.example.app.activities;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.app.R;
+import com.example.app.adapters.VPAdapter;
+import com.example.app.fragments.Fragment2;
+import com.example.app.fragments.Fragment_empty;
+import com.example.app.fragments.Fragment_empty3;
+import com.google.android.material.tabs.TabLayout;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
+import java.util.ArrayList;
 
-public class ScannerActivity extends Activity implements DecoratedBarcodeView.TorchListener{
 
-    private CaptureManager capture;
-    private DecoratedBarcodeView barcodeScannerView;
-    private ImageButton setting_btn,switchFlashlightButton;
-    private Boolean switchFlashlightButtonCheck;
+public class ScannerActivity extends AppCompatActivity { //implements DecoratedBarcodeView.TorchListener{
+    // fields
+    private static Context mContext;
+    private long backKeyPressedTime = 0;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_scanner);
+        setContentView(R.layout.activity_scanner);
 
-        switchFlashlightButtonCheck = true;
+        Intent intent = getIntent();
+        mContext = this;
 
-        setting_btn = (ImageButton)findViewById(R.id.setting_btn);
-        switchFlashlightButton = (ImageButton)findViewById(R.id.switch_flashlight);
+        // setting action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
-        if (!hasFlash()) {
-            switchFlashlightButton.setVisibility(View.GONE);
-        }
+        ViewPager vp = findViewById(R.id.viewpager);
 
-        barcodeScannerView = (DecoratedBarcodeView)findViewById(R.id.zxing_barcode_scanner);
-        barcodeScannerView.setTorchListener(this);
-        capture = new CaptureManager(this, barcodeScannerView);
-        capture.initializeFromIntent(getIntent(), savedInstanceState);
-        capture.decode();
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new Fragment_empty());
+        fragments.add(new Fragment2());
+        fragments.add(new Fragment_empty3());
+        VPAdapter adapter = new VPAdapter(getSupportFragmentManager(), fragments);
+        vp.setAdapter(adapter);
+        // 갤러리를 위한 json file 받기
+        // AssetManager assetManager = getResources().getAssets();
+
+        // connect view pager with tab layout
+        TabLayout tab = findViewById(R.id.tab);
+
+        tab.setupWithViewPager(vp);
+
+        tab.getTabAt(0).setIcon(R.drawable.ic_friends);
+        tab.getTabAt(2).setIcon(R.drawable.ic_histories);
+
+        tab.getTabAt(1).select();
     }
 
+    //어플리케이션 종료하는 버튼
     @Override
-    protected void onResume() {
-        super.onResume();
-        capture.onResume();
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG);
+            toast.show();
+            return;
+        } else {
+            finishAffinity();
+            toast.cancel();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        capture.onPause();
+        //액티비티를 종료할 때 애니메이션 없애기
+        overridePendingTransition(0,0);
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        capture.onDestroy();
+    protected void onResume() {
+        this.overridePendingTransition(0, 0);
+        super.onResume();
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        capture.onSaveInstanceState(outState);
-    }
-
-//        public void onBackPressed() {
-//            backPressCloseHandler.onBackPressed();
-//        }
-
-    public void switchFlashlight(View view) {
-        if (switchFlashlightButtonCheck) {
-            barcodeScannerView.setTorchOn();
-        } else {
-            barcodeScannerView.setTorchOff();
-        }
-    }
-
-    private boolean hasFlash() {
-        return getApplicationContext().getPackageManager()
-                .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-    }
-
-    @Override
-    public void onTorchOn() {
-        switchFlashlightButton.setImageResource(R.drawable.ic_barcode);
-        switchFlashlightButtonCheck = false;
-    }
-
-    @Override
-    public void onTorchOff() {
-        switchFlashlightButton.setImageResource(R.drawable.ic_barcode);
-        switchFlashlightButtonCheck = true;
-    }
 }
