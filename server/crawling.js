@@ -28,16 +28,19 @@ const mnd = async (codenum) => {
   html = await getHTML(blink, check);
   $ = cheerio.load(html.data);
   $("span").remove();
+  $(
+    "#container > div.spot > div.book_info > div.book_info_inner > div:nth-child(2) > a.N\\=a\\:bil\\.publisher"
+  ).remove();
+  const explain = $("#bookIntroContent > p").text();
   $bookinfo = $("#container > div.spot > div.book_info");
   $buylink = $("#productListLayer > ul");
+  // const bookauthor = $bookinfo
+  //   .find("div.book_info_inner > div:nth-child(2)")
+  //   .text();
   const book = {
     key: codenum,
     title: $bookinfo.find("h2 > a").text(),
-    author: $bookinfo
-      .find(
-        "div.book_info_inner > div:nth-child(2) > a.N\\=a\\:bil\\.author\\,i\\:5000036752"
-      )
-      .text(),
+    author: $bookinfo.find("div.book_info_inner > div:nth-child(2) > a").text(),
     price: $bookinfo
       .find("div.book_info_inner > div.price_area > div.lowest > strong")
       .text(),
@@ -62,10 +65,13 @@ const mnd = async (codenum) => {
         "li:nth-child(4) > div > a.N\\=a\\:buy\\.cplist\\,r\\:4\\,i\\:ypbooks"
       )
       .attr("href"),
-    explain: $("#bookIntroContent > p").text(),
+    explain: explain.substring(0, 240),
+    bookimg: $(
+      "#container > div.spot > div.book_info > div.thumb.type_end > div > a > img"
+    ).attr("src"),
   };
   const bookCrawling = JSON.stringify(book);
   console.log(bookCrawling);
 };
 
-mnd("9791158512255"); //책 바코드
+mnd("9788954445290"); //책 바코드

@@ -14,8 +14,14 @@
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_1.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_2.xml" value="0.20952380952380953" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_3.xml" value="0.21875" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_custom_scanner.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_main.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/custom_barcode_scanner.xml" value="0.3619791666666667" />
+=======
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_empty.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/photo_item_large.xml" value="0.21510416666666668" />
+>>>>>>> 132c22aab9d7125a4ab099db8507fe7fd2251fff
       </map>
     </option>
   </component>
