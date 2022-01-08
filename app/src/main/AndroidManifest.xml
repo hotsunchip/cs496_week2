@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ScannerActivity" />
+        <activity android:name=".activities.BookActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>
