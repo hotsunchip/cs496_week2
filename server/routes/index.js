@@ -1,21 +1,22 @@
 var express = require("express");
 var router = express.Router();
+
 //Database 구축
-var mysql = require("mysql");
-const dbconfig = require("../config/database.js");
-const connection = mysql.createConnection(dbconfig);
+// var mysql = require("mysql");
+// const dbconfig = require("../config/database.js");
+// const connection = mysql.createConnection(dbconfig);
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   //Database 구축
-  connection.query("SELECT * from book", (error, rows) => {
-    if (error) throw error;
-    console.log("User info is: ", rows);
-    res.send(rows);
-  });
-  // res.status(200).json({
-  //   success: true,
+  // connection.query("SELECT * from book", (error, rows) => {
+  //   if (error) throw error;
+  //   console.log("User info is: ", rows);
+  //   res.send(rows);
   // });
+  res.status(200).json({
+    success: true,
+  });
 });
 
 router.get("/usersss", function (req, res) {

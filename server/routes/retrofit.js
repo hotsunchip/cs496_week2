@@ -1,6 +1,19 @@
 var express = require("express");
 var router = express.Router();
 
+//Crawling 연결
+const crawlingdata = require("../crawling.js");
+async function getData(barcode) {
+  const bookdata = await crawlingdata.getBook(barcode);
+  console.log(bookdata);
+}
+getData("9791158391508");
+
+//Database 구축
+var mysql = require("mysql");
+const dbconfig = require("../config/database.js");
+const connection = mysql.createConnection(dbconfig);
+
 router.get("/get", function (req, res, next) {
   console.log("GET 호출 / data : " + req.query.data);
   console.log("path : " + req.path);

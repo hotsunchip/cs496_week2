@@ -27,6 +27,8 @@ app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/retrofit", retrofitRouter);
 
+<<<<<<< HEAD
+=======
 // //Database 구축
 // const mysql = require("mysql");
 // const connection = mysql.createConnection({
@@ -44,8 +46,10 @@ app.use("/retrofit", retrofitRouter);
 // });
 
 // connection.end();
+>>>>>>> 4efadb322e44913a76a3bcf61f122141b610d87e
 app.listen(port, () =>
-  console.log("Example app listening at http://192.249.18.166:80/"));
+  console.log("Example app listening at http://192.249.18.166:80/")
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
