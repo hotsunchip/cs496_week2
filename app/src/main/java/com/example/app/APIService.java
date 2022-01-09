@@ -1,7 +1,13 @@
 package com.example.app;
 
+import com.example.app.data.JoinData;
+import com.example.app.data.JoinResponse;
+import com.example.app.data.LoginData;
+import com.example.app.data.LoginResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -27,5 +33,11 @@ public class APIService {
 
         @DELETE("/retrofit/delete/{id}")
         Call<ResponseBody> deleteFunc(@Path("id") String id);
+
+        @POST("/user/login")
+        Call<LoginResponse> userLogin(@Body LoginData data);
+
+        @POST("/user/join")
+        Call<JoinResponse> userJoin(@Body JoinData data);
     }
 }

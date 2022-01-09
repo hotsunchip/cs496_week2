@@ -6,25 +6,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.CircularArray;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.app.APIService;
-import com.example.app.BookInfo;
+import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.adapters.VPAdapter;
 import com.example.app.fragments.Fragment1;
-import com.example.app.fragments.Fragment2;
 import com.example.app.fragments.Fragment3;
-import com.example.app.fragments.Fragment_empty;
 import com.example.app.fragments.Fragment_empty2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -33,18 +26,12 @@ import com.google.zxing.integration.android.IntentResult;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import retrofit2.Retrofit;
-
 public class MainActivity extends AppCompatActivity {
-    // constants
-    public static final String SERVER = "http://10.0.2.2:3000/";
-    public static final String TAG = "MainActivityLog";
-    public static final String URL = "http://192.249.18.166/";
+    // constant
     public static ArrayList<BookInfo> bookList;
 
     // fields
@@ -154,51 +141,5 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setTab(int index) {
         tab.getTabAt(index).select();
-    }
-
-
-    public static class HttpGetRequest extends AsyncTask<Void, Void, String> {
-
-        static final String REQUEST_METHOD = "GET";
-        static final int READ_TIMEOUT = 15000;
-        static final int CONNECTION_TIMEOUT = 15000;
-
-        @Override
-        protected String doInBackground(Void... params){
-            String result;
-            String inputLine;
-
-            try {
-                // connect to the server
-                URL myUrl = new URL(SERVER);
-                HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
-                connection.setRequestMethod(REQUEST_METHOD);
-//                connection.setReadTimeout(READ_TIMEOUT);
-//                connection.setConnectTimeout(CONNECTION_TIMEOUT);
-                connection.connect();
-
-                // get the string from the input stream
-                InputStreamReader streamReader = new InputStreamReader(connection.getInputStream());
-                BufferedReader reader = new BufferedReader(streamReader);
-                StringBuilder stringBuilder = new StringBuilder();
-                while((inputLine = reader.readLine()) != null){
-                    stringBuilder.append(inputLine);
-                }
-                reader.close();
-                streamReader.close();
-                result = stringBuilder.toString();
-
-            } catch(IOException e) {
-                e.printStackTrace();
-                result = "error";
-            }
-
-            return result;
-        }
-
-        protected void onPostExecute(String result){
-            super.onPostExecute(result);
-            Fragment1.tvServerResponse.setText(result);
-        }
     }
 }
