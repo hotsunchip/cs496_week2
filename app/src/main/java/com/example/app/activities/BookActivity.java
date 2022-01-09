@@ -2,9 +2,7 @@ package com.example.app.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +17,6 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.example.app.BookInfo;
 import com.example.app.R;
 import com.example.app.adapters.PhotoLargeAdapter;
 import com.example.app.fragments.Fragment3;

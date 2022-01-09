@@ -2,7 +2,6 @@ package com.example.app.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +12,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app.BookInfo;
+import com.example.app.data.BookInfo;
 import com.example.app.R;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
-import io.socket.client.Url;
 
 public class PhotoSmallAdapter extends RecyclerView.Adapter<PhotoSmallAdapter.ViewHolder> {
     public interface OnListItemSelectedInterface {

@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.BookInfo;
+import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.activities.BookActivity;
 import com.example.app.adapters.PhotoSmallAdapter;
