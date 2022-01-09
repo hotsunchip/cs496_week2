@@ -11,17 +11,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.activities.BookActivity;
 import com.example.app.adapters.PhotoSmallAdapter;
+import com.gtomato.android.ui.manager.CarouselLayoutManager;
+import com.gtomato.android.ui.transformer.CoverFlowViewTransformer;
+import com.gtomato.android.ui.transformer.InverseTimeMachineViewTransformer;
+import com.gtomato.android.ui.transformer.WheelViewTransformer;
+import com.gtomato.android.ui.widget.CarouselView;
 
 import java.util.ArrayList;
 
 public class Fragment3 extends Fragment implements PhotoSmallAdapter.OnListItemSelectedInterface {
     // fields
-    RecyclerView mRecyclerView;
-    private static PhotoSmallAdapter mBookAdapter;
+    CarouselView mRecyclerView;
+    private static CarouselViewAdapter mBookAdapter;
     public static ArrayList<BookInfo> bookList = null;
 
     // Required empty public constructor
@@ -76,11 +82,10 @@ public class Fragment3 extends Fragment implements PhotoSmallAdapter.OnListItemS
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_3, container, false) ;
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.bookCover_recyclerView);
-        RecyclerView.LayoutManager mGridLayoutManager = new GridLayoutManager(getContext(),3);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        mRecyclerView = (CarouselView) view.findViewById(R.id.bookCover_recyclerView);
+        mRecyclerView.setTransformer(new InverseTimeMachineViewTransformer());
 
-        mBookAdapter = new PhotoSmallAdapter(getContext(), bookList, this);
+        mBookAdapter = new CarouselViewAdapter(getContext(), bookList, 0);
         mRecyclerView.setAdapter(mBookAdapter);
 
         return view;

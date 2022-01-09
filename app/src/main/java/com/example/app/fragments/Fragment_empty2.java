@@ -1,5 +1,6 @@
 package com.example.app.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -44,7 +45,6 @@ public class Fragment_empty2 extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-
         if (isVisibleToUser) {
             IntentIntegrator integrator = new IntentIntegrator(getActivity());
             integrator.setCaptureActivity(ScannerActivity.class);
