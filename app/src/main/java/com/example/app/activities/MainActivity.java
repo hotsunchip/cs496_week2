@@ -42,9 +42,9 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     // constants
-    public static final String URL = "http://10.0.2.2:3000/";
+    public static final String SERVER = "http://10.0.2.2:3000/";
     public static final String TAG = "MainActivityLog";
-    public static final String SERVER = "http://192.249.18.166:22/";
+    public static final String URL = "http://192.249.18.166/";
     public static ArrayList<BookInfo> bookList;
 
     // fields

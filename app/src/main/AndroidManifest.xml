@@ -11,18 +11,6 @@
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true"
         >
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="oauth"
-                    android:scheme="kakao_native_app_key" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
