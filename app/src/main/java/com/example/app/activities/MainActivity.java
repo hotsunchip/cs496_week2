@@ -31,7 +31,11 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
 
+=======
+    // constants
+>>>>>>> 4efadb322e44913a76a3bcf61f122141b610d87e
     public static ArrayList<BookInfo> bookList;
 
     // fields
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         bookList = new ArrayList<>();
         setContentView(R.layout.activity_main);
+
+//        Intent intent = getIntent();
 
         // setting action bar
         ActionBar actionBar = getSupportActionBar();
@@ -69,9 +75,8 @@ public class MainActivity extends AppCompatActivity {
         tab.getTabAt(0).setIcon(R.drawable.ic_friends);
         tab.getTabAt(1).setIcon(R.drawable.ic_barcode);
         tab.getTabAt(2).setIcon(R.drawable.ic_histories);
-//        Intent intent = new Intent(this, ScannerActivity.class);
-//        startActivity(intent);
-        tab.getTabAt(0).select();
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
     }
 
     @Override
