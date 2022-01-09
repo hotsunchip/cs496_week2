@@ -27,29 +27,10 @@ app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/retrofit", retrofitRouter);
 
-<<<<<<< HEAD
-=======
-// //Database 구축
-// const mysql = require("mysql");
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "Seankim117!",
-//   database: "madcamp2",
-// });
-
-// connection.connect();
-
-// connection.query("SELECT * from book", (error, rows, fields) => {
-//   if (error) throw error;
-//   console.log("User info is: ", rows);
-// });
-
-// connection.end();
 app.listen(port, () =>
-  console.log("Example app listening at http://192.249.18.166:80/"));
+  console.log("Example app listening at http://192.249.18.166:80/")
+);
 
->>>>>>> 08a254870ecef22f9f786de9821916e156d4fd94
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

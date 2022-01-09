@@ -84,6 +84,10 @@ const getBook = async (codenum) => {
   };
 
   const bookCrawling = JSON.stringify(book);
-  console.log(bookCrawling);
+  // const result = resultconnect(bookCrawling);
   return bookCrawling;
+};
+
+module.exports = {
+  getBook,
 };

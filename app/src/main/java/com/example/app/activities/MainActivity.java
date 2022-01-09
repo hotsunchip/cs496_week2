@@ -31,14 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-    // constants
-    private static final String SERVER = "http://10.0.2.2:3000/";
-    public static final String TAG = "MainActivityLog";
-    public static final String URL = "http://10.0.2.2:3000/";
-=======
-    // constant
->>>>>>> 08a254870ecef22f9f786de9821916e156d4fd94
+
     public static ArrayList<BookInfo> bookList;
 
     // fields
