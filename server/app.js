@@ -10,6 +10,9 @@ var retrofitRouter = require("./routes/retrofit");
 
 var app = express();
 
+const hostname = "172.10.18.166";
+const port = 80;
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -41,6 +44,8 @@ app.use("/retrofit", retrofitRouter);
 // });
 
 // connection.end();
+app.listen(port, () =>
+  console.log("Example app listening at http://192.249.18.166:80/"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

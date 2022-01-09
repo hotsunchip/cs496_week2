@@ -42,9 +42,9 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     // constants
-    private static final String SERVER = "http://10.0.2.2:3000/";
+    public static final String SERVER = "http://10.0.2.2:3000/";
     public static final String TAG = "MainActivityLog";
-    public static final String URL = "http://192.249.18.166:80/";
+    public static final String URL = "http://192.249.18.166/";
     public static ArrayList<BookInfo> bookList;
 
     // fields
@@ -98,15 +98,33 @@ public class MainActivity extends AppCompatActivity {
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
 
+            setTab(2);
             bringBookInfo();
             Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
-            bookIntent.putExtra("bookId", re);
+            bookIntent.putExtra("pos", 0);
             startActivity(bookIntent);
         }
     }
 
     private void bringBookInfo() {
+        BookInfo book = new BookInfo();
+        book.setBookId("9788954445290");
+        book.setBookTitle("도쿄의 시간 기록자들");
+        book.setBookImg("https://bookthumb-phinf.pstatic.net/cover/168/912/16891202.jpg?type=m140&udate=20201029");
+        book.setBookAuthor("정재혁");
+        book.setBookPoint("10.0");
+        book.setBookPrice("13320");
+        book.setBookUrl1("http://www.yes24.com/Cooperate/Yes24Gateway.aspx?pid=95609&ReturnURL=http://www.yes24.com/Product/Goods/94407952");
+        book.setBookUrl2("http://www.kyobobook.co.kr/cooper/redirect_over.jsp?LINK=NVB&next_url=http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9788954445290");
+        book.setBookUrl3("https://www.aladin.co.kr/part/wgate.aspx?k=yX0iVru1r6MZd1dA4HlGejY2Ue8syl&sk=641696&u=%2Fshop%2Fwproduct.aspx%3FISBN%3D8954445292");
+        book.setBookUrl4("https://www.ypbooks.co.kr/book.yp?bookcd=101059066&gubun=NV");
+        book.setBookExplain("전통과 현대의 감각이 만난 새로운 오늘자신만의 역사를 써 내려가는도쿄의 젊은 장인들세상 모든 일이 없어져도살아남을 단 하나의 직업 ‘장인’어제를 기억하는 내일과 가장 가까운 도시, 도쿄스스로 브랜드가 된 젊은 장인들의 일과 삶‘일’이란 무엇일까. 돈을 버는 수단이라는 건조한 사전적 의미를 지우고 나면, 한 사람의 정체성과 셀 수 없이 많은 사연이 숨어 있는 손때 묻은 개인의 역사가 아닐까. 더욱이 요즘, 자신만의 개성과 속도로");
+
+        Fragment3.bookList.add(0, book);
+        Fragment3.refreshAdapter();
     }
+
+
 
     //어플리케이션 종료하는 버튼
     @Override
