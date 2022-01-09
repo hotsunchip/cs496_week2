@@ -1,7 +1,5 @@
 package com.example.app.fragments;
 
-import static com.example.app.activities.MainActivity.URL;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.app.APIService;
 import com.example.app.R;
-import com.example.app.activities.MainActivity;
+import com.example.app.RetrofitClient;
 
 import java.io.IOException;
 
@@ -65,15 +63,6 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         btn_post.setOnClickListener(this);
         btn_delete.setOnClickListener(this);
         btn_update.setOnClickListener(this);
-//        tvServerResponse = view.findViewById(R.id.textView);
-//        Button contactServerButton = view.findViewById(R.id.button);
-//        contactServerButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MainActivity.HttpGetRequest request = new MainActivity.HttpGetRequest();
-//                request.execute();
-//            }
-//        });
 
         return view;
     }
@@ -84,7 +73,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     public void firstInit() {
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(MainActivity.URL)
+                .baseUrl(RetrofitClient.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         service = retrofit.create(APIService.ApiService.class);
@@ -104,21 +93,21 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                         if (response.isSuccessful()) {
                             try {
                                 String result = response.body().string();
-                                Log.v(MainActivity.TAG, "result = " + result);
+                                Log.v("", "result = " + result);
                                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
-                            Log.v(MainActivity.TAG, "error = " + String.valueOf(response.code()));
+                            Log.v("", "error = " + String.valueOf(response.code()));
                             Toast.makeText(getContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.v(MainActivity.TAG, "Fail");
-                        Toast.makeText(getContext(), "Response Fail" + URL, Toast.LENGTH_SHORT).show();
+                        Log.v("", "Fail");
+                        Toast.makeText(getContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
@@ -131,20 +120,20 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                         if (response.isSuccessful()) {
                             try {
                                 String result = response.body().string();
-                                Log.v(MainActivity.TAG, "result = " + result);
+                                Log.v("", "result = " + result);
                                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
-                            Log.v(MainActivity.TAG, "error = " + String.valueOf(response.code()));
+                            Log.v("", "error = " + String.valueOf(response.code()));
                             Toast.makeText(getContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.v(MainActivity.TAG, "Fail");
+                        Log.v("", "Fail");
                         Toast.makeText(getContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -158,20 +147,20 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                         if (response.isSuccessful()) {
                             try {
                                 String result = response.body().string();
-                                Log.v(MainActivity.TAG, "result = " + result);
+                                Log.v("", "result = " + result);
                                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
-                            Log.v(MainActivity.TAG, "error = " + String.valueOf(response.code()));
+                            Log.v("", "error = " + String.valueOf(response.code()));
                             Toast.makeText(getContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.v(MainActivity.TAG, "Fail");
+                        Log.v("", "Fail");
                         Toast.makeText(getContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -185,20 +174,20 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                         if (response.isSuccessful()) {
                             try {
                                 String result = response.body().string();
-                                Log.v(MainActivity.TAG, "result = " + result);
+                                Log.v("", "result = " + result);
                                 Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
-                            Log.v(MainActivity.TAG, "error = " + String.valueOf(response.code()));
+                            Log.v("", "error = " + String.valueOf(response.code()));
                             Toast.makeText(getContext(), "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.v(MainActivity.TAG, "Fail");
+                        Log.v("", "Fail");
                         Toast.makeText(getContext(), "Response Fail", Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.app.R;
-import com.example.app.adapters.PhotoLargeAdapter;
+import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.fragments.Fragment3;
 
 public class BookActivity extends AppCompatActivity {
@@ -30,7 +30,7 @@ public class BookActivity extends AppCompatActivity {
         TextView mReviewDescription;
         EditText mReviewMembersEdit;
         EditText mReviewDescriptionEdit;
-        PhotoLargeAdapter photoLargeAdapter;
+        CarouselViewAdapter photoLargeAdapter;
         boolean onEditMode;
         private int position;
         private InputMethodManager imm;
@@ -56,7 +56,7 @@ public class BookActivity extends AppCompatActivity {
 //            imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 //            onEditMode = false;
 //
-            photoLargeAdapter = new PhotoLargeAdapter(this, Fragment3.bookList, 0); //this, position);
+            photoLargeAdapter = new CarouselViewAdapter(this, Fragment3.bookList, 0); //this, position);
             mReviewInfo = (CardView) findViewById(R.id.cardView);
             mReviewPicture = (CardView) findViewById(R.id.cardView_edit_bkgd);
             mRecyclerView = (RecyclerView) findViewById(R.id.photo_list);
