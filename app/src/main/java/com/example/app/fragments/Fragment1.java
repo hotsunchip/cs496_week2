@@ -84,7 +84,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     public void firstInit() {
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
+                .baseUrl(MainActivity.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         service = retrofit.create(APIService.ApiService.class);
@@ -118,7 +118,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Log.v(MainActivity.TAG, "Fail");
-                        Toast.makeText(getContext(), "Response Fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Response Fail" + URL, Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;

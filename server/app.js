@@ -5,10 +5,13 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var userRouter = require("./routes/users");
 var retrofitRouter = require("./routes/retrofit");
 
 var app = express();
+
+const hostname = "172.10.18.166";
+const port = 80;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,9 +24,32 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", userRouter);
 app.use("/retrofit", retrofitRouter);
 
+<<<<<<< HEAD
+=======
+// //Database 구축
+// const mysql = require("mysql");
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "Seankim117!",
+//   database: "madcamp2",
+// });
+
+// connection.connect();
+
+// connection.query("SELECT * from book", (error, rows, fields) => {
+//   if (error) throw error;
+//   console.log("User info is: ", rows);
+// });
+
+// connection.end();
+app.listen(port, () =>
+  console.log("Example app listening at http://192.249.18.166:80/"));
+
+>>>>>>> 08a254870ecef22f9f786de9821916e156d4fd94
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
