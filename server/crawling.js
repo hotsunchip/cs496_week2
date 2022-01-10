@@ -71,11 +71,12 @@ const getBook = async (codenum) => {
 
   const book = {
     codenum: codenum,
-    title: title.substring(0, 50),
+    title: title.substring(0, title.length - 1),
     author: author.substring(0, 20),
     price: price.substring(0, 10),
-    imgbook: imgbook.substring(0, 250),
     review: review.substring(0, 10),
+    love: "F",
+    imgbook: imgbook.substring(0, 250),
     payone: payone.substring(0, 250),
     paytwo: paytwo.substring(0, 250),
     paythree: paythree.substring(0, 250),
@@ -83,10 +84,13 @@ const getBook = async (codenum) => {
     aboutbook: aboutbook.substring(0, 240) + "...",
   };
 
-  const bookCrawling = JSON.stringify(book);
-  // const result = resultconnect(bookCrawling);
-  return bookCrawling;
+  // JSON 파일 형식으로 변환
+  // const bookCrawling = JSON.stringify(book);
+
+  console.log(book);
+  return book;
 };
+getBook("9791165212308");
 
 module.exports = {
   getBook,

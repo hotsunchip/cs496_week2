@@ -10,7 +10,7 @@ var retrofitRouter = require("./routes/retrofit");
 
 var app = express();
 
-const hostname = "172.10.18.166";
+const hostname = "http://localhost:3000/";
 const port = 80;
 
 // view engine setup
@@ -27,26 +27,6 @@ app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/retrofit", retrofitRouter);
 
-<<<<<<< HEAD
-=======
-// //Database 구축
-// const mysql = require("mysql");
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "Seankim117!",
-//   database: "madcamp2",
-// });
-
-// connection.connect();
-
-// connection.query("SELECT * from book", (error, rows, fields) => {
-//   if (error) throw error;
-//   console.log("User info is: ", rows);
-// });
-
-// connection.end();
->>>>>>> 4efadb322e44913a76a3bcf61f122141b610d87e
 app.listen(port, () =>
   console.log("Example app listening at http://192.249.18.166:80/")
 );

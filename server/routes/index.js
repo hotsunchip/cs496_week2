@@ -8,12 +8,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  //Database 구축
-  // connection.query("SELECT * from book", (error, rows) => {
-  //   if (error) throw error;
-  //   console.log("User info is: ", rows);
-  //   res.send(rows);
-  // });
   res.status(200).json({
     success: true,
   });

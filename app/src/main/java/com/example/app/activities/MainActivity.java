@@ -31,11 +31,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-
-=======
-    // constants
->>>>>>> 4efadb322e44913a76a3bcf61f122141b610d87e
     public static ArrayList<BookInfo> bookList;
 
     // fields
@@ -43,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private long backKeyPressedTime = 0;
     private Toast toast;
     private static TabLayout tab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
