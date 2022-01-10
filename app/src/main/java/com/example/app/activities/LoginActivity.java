@@ -88,18 +88,16 @@ public class LoginActivity extends AppCompatActivity {
             focusView = mPasswordView;
             cancel = true;
         }
-
         // 이메일의 유효성 검사
         if (email.isEmpty()) {
             mEmailView.setError("아이디를 입력해주세요.");
             focusView = mEmailView;
             cancel = true;
         }
-
         if (cancel) {
             focusView.requestFocus();
         } else {
-            startLogin(new LoginData(email, password));
+            startLogin(new LoginData(email));
             showProgress(true);
         }
     }
@@ -110,24 +108,33 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        String result = response.body().string();
-                        Log.v("", "result = " + result);
-                        Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
-                        showProgress(false);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String codenum = response.body().getCodenum();
+                    String title = response.body().getTitle();
+                    String author = response.body().getAuthor();
+                    String price = response.body().getPrice();
+                    String review = response.body().getReview();
+                    String love = response.body().getLove();
+                    String imgbook = response.body().getImgbook();
+                    String payone = response.body().getPayone();
+                    String paytwo = response.body().getPaytwo();
+                    String paythree = response.body().getPaythree();
+                    String payfour = response.body().getPayfour();
+                    String aboutbook = response.body().getAboutbook();
+
+                    String result = "로그인에 성공하였습니다!";
+                    Log.v("", "result = " + result);
+                    Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
+                    showProgress(false);
                 } else {
-                    Log.v("", "error = " + String.valueOf(response.code()));
-                    Toast.makeText(LoginActivity.this, "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    String result ="로그인에 실패하였습니다.";
+                    Log.v("", "error = " + result);
+                    Toast.makeText(LoginActivity.this, "error = " + result, Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
-                Log.e("로그인 에러 발생", t.getMessage());
+                Toast.makeText(LoginActivity.this, "로그인 에러 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                Log.e("로그인 에러 발생하였습니다.", t.getMessage());
                 showProgress(false);
             }
         });
@@ -173,7 +180,10 @@ public class LoginActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            startJoin(new JoinData(name, email, password));
+            String userid = email;
+            String userpw = password;
+            String nickname = name;
+            startJoin(new JoinData(userid, userpw, nickname));
             showProgress(true);
         }
     }
@@ -183,16 +193,19 @@ public class LoginActivity extends AppCompatActivity {
         call_join.enqueue(new Callback<JoinResponse>() {
             @Override
             public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
-                JoinResponse result = response.body();
+                int code = response.body().getCode();
+                String message = response.body().getMessage();
                 if (response.isSuccessful()) {
+                    String result = "회원가입에 성공하였습니다!";
                     Log.v("", "result = " + result);
-                    Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                     showProgress(false);
                 } else {
-                    Log.v("", "error = " + String.valueOf(response.code()));
-                    Toast.makeText(LoginActivity.this, "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    String result = "회원가입에 실패하였습니다!";
+                    Log.v("", "error = " + result);
+                    Toast.makeText(LoginActivity.this, "error = " + result, Toast.LENGTH_SHORT).show();
                 }
-                if (result.getCode() == 200) {
+                if (response.body().getCode() == 200) {
                     moveMain();
                 }
             }

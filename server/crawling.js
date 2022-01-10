@@ -90,7 +90,6 @@ const getBook = async (codenum) => {
   console.log(book);
   return book;
 };
-getBook("9791165212308");
 
 module.exports = {
   getBook,

@@ -7,7 +7,7 @@ const dbconfig = require("../config/database.js");
 const connection = mysql.createConnection(dbconfig);
 
 //로그인 클릭 시 -> req.body.userid, req.body.userpw
-router.get("/signcheck", function (req, res) {
+router.post("/signcheck", function (req, res) {
   let checkid = req.body.userid;
   let checkpw = req.body.userpw;
   var userid = "id";

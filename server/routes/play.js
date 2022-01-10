@@ -68,10 +68,10 @@ router.get("/barcodecheck", function (req, res) {
   getData(codenum);
 });
 
-//이용기록 삭제했을 때 db에서 delete -> req.data.codenum, req.data.userid
+//이용기록 삭제했을 때 db에서 delete -> req.body.codenum, req.body.userid
 router.delete("/barcodedelete", function (req, res) {
-  let codenum = req.data.codenum;
-  let userid = req.data.userid;
+  let codenum = req.body.codenum;
+  let userid = req.body.userid;
   let sqlwrite =
     "DELETE FROM books WHERE books.codenum = '" +
     codenum +
