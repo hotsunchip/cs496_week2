@@ -111,7 +111,8 @@ public class Fragment3 extends Fragment {
                         // alpha        0   ... 0       0.2     0.4     0.6     0.8     1.0
                         // transX       -∞  ... -1.0w   -0.8w   -0.6w   -0.4w   -0.2w   0w
                         // scale        0   ... 0.5     0.6     0.7     0.8     0.9     1.0
-                        alpha = Math.max(0f, 1.0f - position * 0.2f);
+//                        alpha = Math.max(0f, 1.0f - position * 0.2f);
+                        alpha = 1.0f;
                         transX = position * width * 0.03f;
                         scale = Math.max(0f, 1.0f - position * 0.02f); // s = 1 - 0.4 * (0.2p)^2
                     } else /*if (position < 1) */ { // (0, 1)
