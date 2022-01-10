@@ -10,7 +10,7 @@ var retrofitRouter = require("./routes/retrofit");
 
 var app = express();
 
-const hostname = "172.10.18.166";
+const hostname = "http://localhost:3000/";
 const port = 80;
 
 // view engine setup
