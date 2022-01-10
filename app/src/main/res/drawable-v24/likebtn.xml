@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="true"
+        android:state_pressed="true"
+        android:drawable="@drawable/ic_heart_focus"
+        />
+    <item
+    android:state_pressed="true"
+    android:drawable="@drawable/ic_heart_focus"
+    />
+    <item android:state_selected="true"
+        android:drawable="@drawable/ic_heart_filled" />
+
+    <!-- 위젯에 포커스가 와 있을때 이미지 -->
+    <!--item
+        android:state_focused="true"
+        android:drawable="@drawable/ic_heart_focus"
+        /-->
+
+    <!-- 보통 상태 이미지 -->
+    <item
+        android:drawable="@drawable/ic_heart_basic"
+        />
+</selector>

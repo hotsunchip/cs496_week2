@@ -7,11 +7,15 @@
     tools:context=".activities.MainActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/infoApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:src="@drawable/ic_baseline_info_24"
+        app:tint="@null"
+        app:maxImageSize="48dp"
+        app:backgroundTint="@color/green_500"
+        android:elevation="0dp"
         android:layout_marginBottom="@dimen/fab_margin"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +38,7 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
                 app:tabBackground="@color/gray_000"
