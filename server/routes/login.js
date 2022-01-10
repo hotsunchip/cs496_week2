@@ -17,7 +17,7 @@ router.get("/signcheck", function (req, res) {
     var resultCode = 404;
     var message = "에러가 발생했습니다.";
     if (error) throw error;
-    var check = false;
+    var check = 0;
     for (let i = 0; i < results.length; i++) {
       if (results[i].userid == checkid) {
         check = true;
