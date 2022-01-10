@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Toast toast;
     private static TabLayout tab;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

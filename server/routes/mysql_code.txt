@@ -1,0 +1,93 @@
+//MySQL 설정 코드
+
+CREATE DATABASE madcamp2;
+
+USE madcamp2;
+
+CREATE TABLE books (num INT PRIMARY KEY AUTO_INCREMENT, userid VARCHAR(20) NOT NULL, codenum CHAR(13) NOT NULL, title VARCHAR(50) NOT NULL, author VARCHAR(20) NOT NULL, price VARCHAR(10) NOT NULL, review VARCHAR(10) NOT NULL, love CHAR(1) NOT NULL, imgbook VARCHAR(250), payone VARCHAR(250), paytwo VARCHAR(250), paythree VARCHAR(250), payfour VARCHAR(250), aboutbook VARCHAR(250));
+
+CREATE TABLE users (userid VARCHAR(20) PRIMARY KEY, userpw VARCHAR(20) NOT NULL, nickname VARCHAR(20) NOT NULL);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+CREATE TABLE books (num INT PRIMARY KEY AUTO_INCREMENT, userid VARCHAR(20) NOT NULL, codenum CHAR(13) NOT NULL, title VARCHAR(50) NOT NULL, author VARCHAR(20) NOT NULL, price VARCHAR(10) NOT NULL, review VARCHAR(10) NOT NULL, love CHAR(1) NOT NULL, imgbook VARCHAR(250), payone VARCHAR(250), paytwo VARCHAR(250), paythree VARCHAR(250), payfour VARCHAR(250), aboutbook VARCHAR(250));
+
+INSERT INTO books (userid, codenum, title, author, price, review, love, imgbook, payone, paytwo, paythree, payfour, aboutbook) VALUES ("sumin","9791158391508","Vue.js 철저 입문 ","카와구치 카즈야","27000","0.0","F","https://bookthumb-phinf.pstatic.net/cover/147/966/14796608.jpg?type=m140&udate=20190419","http://www.yes24.com/Cooperate/Yes24Gateway.aspx?pid=95609&ReturnURL=http://www.yes24.com/Product/Goods/72169945","http://www.kyobobook.co.kr/cooper/redirect_over.jsp?LINK=NVB&next_url=http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9791158391508","https://www.aladin.co.kr/part/wgate.aspx?k=yX0iVru1r6MZd1dA4HlGejY2Ue8syl&sk=641696&u=%2Fshop%2Fwproduct.aspx%3FISBN%3DK652635584","https://www.ypbooks.co.kr/book.yp?bookcd=100947768&gubun=NV","VUE.JS 입문서 결정판. 초보부터 실무까지 이 책 한권 으로!VUE.JS는 깃허브에서 ‘가장 인기 있는 자바스크립트 프레임워크’로 꼽힐 만큼 많은 주목을 받고 있는 기술입니다. 《VUE.JS 철저 입문》에서는 프런트 엔드 특화 라이브러리 중에서 가장 큰 지지를 받는 VUE.JS 를 중심으로 현대적인 프런트 엔드 개발을 경험해 볼 수 있게 구성했습니다.사용하기 쉽고 현업에서 많이 사용되는 VUE.JS를 VUE.JS 코어 팀 멤버...");
+
+INSERT INTO books (userid, codenum, title, author, price, review, love, imgbook, payone, paytwo, paythree, payfour, aboutbook) VALUES ("sumin","9788954445290","도쿄의 시간 기록자들 ","정재혁","13320","10.0","F","https://bookthumb-phinf.pstatic.net/cover/168/912/16891202.jpg?type=m140&udate=20201029","http://www.yes24.com/Cooperate/Yes24Gateway.aspx?pid=95609&ReturnURL=http://www.yes24.com/Product/Goods/94407952","http://www.kyobobook.co.kr/cooper/redirect_over.jsp?LINK=NVB&next_url=http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9788954445290","https://www.aladin.co.kr/part/wgate.aspx?k=yX0iVru1r6MZd1dA4HlGejY2Ue8syl&sk=641696&u=%2Fshop%2Fwproduct.aspx%3FISBN%3D8954445292","https://www.ypbooks.co.kr/book.yp?bookcd=101059066&gubun=NV","전통과 현대의 감각이 만난 새로운 오늘자신만의 역사를 써 내려가는도쿄의 젊은 장인들세상 모든 일이 없어져도살아남을 단 하나의 직업 ‘장인’어제를 기억하는 내일과 가장 가까운 도시, 도쿄스스로 브랜드가 된 젊은 장인들의 일과 삶‘일’이란 무엇일까. 돈을 버는 수단이라는 건조한 사전적 의미를 지우고 나면, 한 사람의 정체성과 셀 수 없이 많은 사연이 숨어 있는 손때 묻은 개인의 역사가 아닐까. 더욱이 요즘, 자신만의 개성과 속도로...");
+
+let sqlwrite = "INSERT INTO books (userid, codenum, title, author, price, review, love, imgbook, payone, paytwo, paythree, payfour, aboutbook) VALUES ('"+req.body.userid+"', '"+bookdata.codenum+"', '"+bookdata.title+"', '"+bookdata.author+"', '"+bookdata.price+"', '"+bookdata.review+"', '"+bookdata.love+"', '"+bookdata.imgbook+"', '"+bookdata.payone+"', '"+bookdata.paytwo+"', '"+bookdata.paythree+"', '"+bookdata.payfour+"', '"+bookdata.aboutbook+"')";
+
+select num, userid, codenum, title, author, price, review, love from books;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+CREATE TABLE users (userid VARCHAR(20) PRIMARY KEY, userpw VARCHAR(20) NOT NULL, nickname VARCHAR(20) NOT NULL);
+
+INSERT INTO users (userid, userpw, nickname) VALUES ("sumin", "suminkim1", "김수민");
+
+SELECT * FROM users;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+CREATE TABLE booklist (userid VARCHAR(20), codenum CHAR(13), love CHAR(1));
+
+INSERT INTO booklist (userid, codenum, love) VALUES ("sumin", "9791158391508", "T");
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+userid가 'sumin'인 것을 찾아서 'sumin'이 찾은 책 정보 중 바코드와 제목을 출력
+
+SELECT users.userid, books.codenum, books.title
+FROM users JOIN booklists ON users.userid = booklists.userid INNER JOIN book ON booklist.codenum = book.codenum
+WHERE user.userid = 'sumin';
+
+SELECT users.userid, users.nickname, books.codenum, books.title
+FROM users JOIN books ON users.userid = books.userid;
+
+
+{
+    codenum: '9791158391508',
+    title: 'Vue.js 철저 입문 ',
+    author: '카와구치 카즈야',  
+    price: '27000',  
+    review: '0.0',  
+    love: 'F',  
+    imgbook: 'https://bookthumb-phinf.pstatic.net/cover/147/966/14796608.jpg?type=m140&udate=20190419',
+    payone: 'http://www.yes24.com/Cooperate/Yes24Gateway.aspx?pid=95609&ReturnURL=http://www.yes24.com/Product/Goods/72169945',
+    paytwo: 'http://www.kyobobook.co.kr/cooper/redirect_over.jsp?LINK=NVB&next_url=http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9791158391508',
+    paythree: 'https://www.aladin.co.kr/part/wgate.aspx?k=yX0iVru1r6MZd1dA4HlGejY2Ue8syl&sk=641696&u=%2Fshop%2Fwproduct.aspx%3FISBN%3DK652635584',
+    payfour: 'https://www.ypbooks.co.kr/book.yp?bookcd=100947768&gubun=NV',
+    aboutbook: 'VUE.JS 입문서 결정판. 초보부터 실무까지 이 책 한권으로!VUE.JS는 깃허브에서 ‘가장 인기 있는 자바스크립트 프레임워크’로 꼽힐 만큼 많은 주목을 받고 있는 기술입니다. 《VUE.JS 철저 입문》에서는 프런트 엔드 특화 라이브러리 중에서 가장 큰 지지를 받는 VUE.JS를 중심으로 현대적인 프런트 엔드 개발을 경험해 볼 수 있게 구성했습니다.사용하기 쉽고 현업에서 많이 사용되는 VUE.JS를 VUE.JS 코어 팀 멤버...'
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+데이터 삭제하기
+여기서 codenum과 userid은 새로 지정해줘야 함
+
+DELETE FROM books WHERE books.codenum = barcode AND books.userid = username;
+
+DELETE FROM books WHERE books.codenum = '9791165212308' AND books.userid = 'sumin';
+
+let sqlwrite = "DELETE FROM books WHERE books.codenum = '" + codenum + "'AND books.userid = '" + userid +"';";
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+데이터 변경하기
+하트(찜)를 눌렀을 때 love를 'T'로 변경
+여기서 codenum과 userid은 새로 지정해줘야 함
+
+UPDATE books SET love="T" WHERE books.codenum = barcode AND books.userid = username;
+
+UPDATE books SET love="T" WHERE books.codenum = '9788954445290' AND books.userid = 'sumin';
+
+let sqlwrite = "UPDATE books SET love="T" WHERE books.codenum = '" + codenum + "'AND books.userid = '" + userid +"';";
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+회원가입 시 아이디 중복 체크
+select userid from users;
+
+회원가입 정보 입력
+INSERT INTO users (userid, userpw, nickname) VALUES ('userid', 'userpw', 'nickname');
+
+"INSERT INTO users (userid, userpw, nickname) VALUES ('" + userid "', '" + userpw + "', '" + nickname + "');";
