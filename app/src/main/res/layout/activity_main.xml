@@ -20,14 +20,14 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_height="56dp"
                 android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                app:tabBackground="@color/gray_000"
                 app:tabIndicator="@null"
-                app:tabTextColor="@color/gray_300"
                 app:tabSelectedTextColor="@color/gray_900"
-                app:tabBackground="@color/gray_000">
-<!--                app:tabIconTint="@color/tab_color_selector"-->
+                app:tabTextColor="@color/gray_300">
+                <!--                app:tabIconTint="@color/tab_color_selector"-->
                 <!-- app:tabTextAppearance="@style/TabText">-->
                 <!--            android:background="@color/red_500">-->
 
@@ -35,19 +35,19 @@
                     android:id="@+id/tab_Item1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_Item2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_Item3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"/>
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
             </com.google.android.material.tabs.TabLayout>
         </androidx.viewpager.widget.ViewPager>
     </LinearLayout>

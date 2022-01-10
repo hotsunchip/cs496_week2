@@ -24,9 +24,9 @@ import com.gtomato.android.ui.widget.CarouselView;
 
 import java.util.ArrayList;
 
-public class Fragment3 extends Fragment implements PhotoSmallAdapter.OnListItemSelectedInterface {
+public class Fragment3 extends Fragment {
     // fields
-    CarouselView mRecyclerView;
+    private static CarouselView mRecyclerView;
     private static CarouselViewAdapter mBookAdapter;
     public static ArrayList<BookInfo> bookList = null;
 
@@ -41,7 +41,9 @@ public class Fragment3 extends Fragment implements PhotoSmallAdapter.OnListItemS
     }
 
     public static void refreshAdapter() {
-        mBookAdapter.notifyDataSetChanged();
+        mBookAdapter.notifyItemInserted(0);
+        mRecyclerView.smoothScrollToPosition(0);
+//        mBookAdapter.notifyDataSetChanged();
         // mRecyclerView.setAdapter(photoAdapter);
         Log.e("refreshed", "true");
     }
@@ -83,21 +85,59 @@ public class Fragment3 extends Fragment implements PhotoSmallAdapter.OnListItemS
         View view = inflater.inflate(R.layout.fragment_3, container, false) ;
 
         mRecyclerView = (CarouselView) view.findViewById(R.id.bookCover_recyclerView);
-        mRecyclerView.setTransformer(new InverseTimeMachineViewTransformer());
+//        mRecyclerView.setTransformer(new InverseTimeMachineViewTransformer());
+        mRecyclerView.setTransformer(new CarouselView.ViewTransformer() {
+            @Override
+            public void onAttach(CarouselLayoutManager layoutManager) {
+                layoutManager.setDrawOrder(CarouselView.DrawOrder.FirstFront);
+            }
 
-        mBookAdapter = new CarouselViewAdapter(getContext(), bookList, 0);
+//            @Override
+//            public void transform(View view, float position) {
+//                int width = view.getMeasuredWidth(), height = view.getMeasuredHeight();
+//                view.setTranslationX(width * position * (1) * 0.5f * (2f / (Math.abs(position) + 2)));
+//                view.setScaleX(2f / (position + 2));
+//                view.setScaleY(2f / (position + 2));
+//                view.setAlpha(position < 0 ? Math.max(1 + position, 0) : 1);
+//            }
+
+            @Override
+            public void transform(View view, float position) {
+                int width = view.getMeasuredWidth(), height = view.getMeasuredHeight();
+                float alpha, transX, scale;
+                if (-1 < position && position < 5) { // (-5, 1)
+                    if (position >= 0) { // (-5, 0]
+                        // position     -∞  ... -5      -4      -3      -2      -1      0
+                        // alpha        0   ... 0       0.2     0.4     0.6     0.8     1.0
+                        // transX       -∞  ... -1.0w   -0.8w   -0.6w   -0.4w   -0.2w   0w
+                        // scale        0   ... 0.5     0.6     0.7     0.8     0.9     1.0
+                        alpha = Math.max(0f, 1.0f - position * 0.2f);
+                        transX = position * width * 0.03f;
+                        scale = Math.max(0f, 1.0f - position * 0.02f); // s = 1 - 0.4 * (0.2p)^2
+                    } else /*if (position < 1) */ { // (0, 1)
+                        // position     0       0.5     1       ...     +∞
+                        // alpha        1.0     0.5     0       ...     0
+                        // transX       0pw     0.25pw  0.5pw   ...     +∞
+                        // scale        1.0     2.25    3.5     ...     +∞
+                        alpha = Math.max(0f, 1.0f + position);
+                        transX = position * mRecyclerView.getWidth() / 2;
+                        scale = 1.0f - position * 0.5f;
+                    }
+                    view.setAlpha(alpha);
+                    view.setTranslationX(transX);
+                    view.setScaleX(scale);
+                    view.setScaleY(scale);
+                    view.setVisibility(View.VISIBLE);
+                } else { // (-∞, -5] | [1, +∞)
+                    // explicitly set visibility instead of alpha to improve performance
+                    view.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        mBookAdapter = new CarouselViewAdapter(getContext(), bookList);
         mRecyclerView.setAdapter(mBookAdapter);
 
         return view;
-    }
-
-    // bookImg가 클릭되었을 때
-    @Override
-    public void onItemSelected(View view, int position) {
-        Log.e("Listen", String.valueOf(position));
-        Intent intent = new Intent(getActivity(), BookActivity.class);
-        intent.putExtra("pos", position);
-//        intent.putExtra("pos_pic", 0);
-        startActivity(intent);
     }
 }

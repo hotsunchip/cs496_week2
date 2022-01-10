@@ -4,81 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Fragment3">
+    tools:context=".fragments.Fragment3"
+    android:background="@color/yellow_200">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+
+    <com.gtomato.android.ui.widget.CarouselView
+        android:id="@+id/bookCover_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/yellow_200">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:textSize="@dimen/textContentSize"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name" />
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/wishList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="28dp"
-                android:padding="4dp"
-                android:text="@string/app_name"
-                android:textColor="@color/green_500"
-                android:textAlignment="center"
-                android:clickable="true"
-                android:textSize="@dimen/textMidSize" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-<!--            android:background="@drawable/text_linear_bottom"-->
-
-            <TextView
-                android:id="@+id/btn_histories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:layout_gravity="center|fill_horizontal"
-                android:layout_weight="1"
-                android:text="내 기록"
-                android:textAlignment="center"/>
-<!--                android:textColor="@color/text_selector"-->
-<!--                android:background="@drawable/btn_pushable" />-->
-
-            <TextView
-                android:id="@+id/btn_likes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:layout_gravity="center|fill_horizontal"
-                android:layout_weight="1"
-                android:text="찜 목록"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <com.gtomato.android.ui.widget.CarouselView
-            android:id="@+id/bookCover_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
+        android:layout_centerInParent="true"/>
 
 </FrameLayout>

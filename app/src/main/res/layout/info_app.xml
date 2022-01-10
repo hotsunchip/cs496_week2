@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/transparent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:elevation="@dimen/cardElevation"
+        app:cardBackgroundColor="@color/yellow_200"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/delete_review_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="책 후면의 바코드를 인식시켜"
+                android:textAlignment="center"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/textMidSize"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/delete_review_message2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="보고 싶은 책을 저장해보세요"
+            android:textAlignment="center"
+            android:textColor="@color/gray_800"
+            android:textSize="@dimen/textMidSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delete_review_message" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,33 +42,33 @@ public class BookActivity extends AppCompatActivity {
             setContentView(R.layout.activity_book);
 
 
-            Intent intent = getIntent();
-            position = intent.getIntExtra("pos", 0);
-//            BookInfo book = MainActivity.bookList.get(bookId);
-//            BookInfo book = createBookInfo();
-//            Fragment3.bookList.add(0, book);
-
-            // setting action bar
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setTitle(String.valueOf(position));//book.getReviewName());
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setElevation(0);
-//            imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//            onEditMode = false;
+//            Intent intent = getIntent();
+//            position = intent.getIntExtra("pos", 0);
+////            BookInfo book = MainActivity.bookList.get(bookId);
+////            BookInfo book = createBookInfo();
+////            Fragment3.bookList.add(0, book);
 //
-            photoLargeAdapter = new CarouselViewAdapter(this, Fragment3.bookList, 0); //this, position);
-            mReviewInfo = (CardView) findViewById(R.id.cardView);
-            mReviewPicture = (CardView) findViewById(R.id.cardView_edit_bkgd);
-            mRecyclerView = (RecyclerView) findViewById(R.id.photo_list);
-            mReviewMembers = (TextView) findViewById(R.id.photo_members);
-            mReviewDate = (TextView) findViewById(R.id.photo_date);
-            mReviewDescription = (TextView) findViewById(R.id.photo_description);
-            LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-            mRecyclerView.setLayoutManager(mLinearLayoutManager);
-            mRecyclerView.setAdapter(photoLargeAdapter);
-            SnapHelper helper = new LinearSnapHelper();
-            helper.attachToRecyclerView(mRecyclerView);
-            mRecyclerView.smoothScrollToPosition(position);
+//            // setting action bar
+//            ActionBar actionBar = getSupportActionBar();
+//            actionBar.setTitle(String.valueOf(position));//book.getReviewName());
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setElevation(0);
+////            imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+////            onEditMode = false;
+////
+////            photoLargeAdapter = new CarouselViewAdapter(this, Fragment3.bookList, BookActivity.this); //this, position);
+//            mReviewInfo = (CardView) findViewById(R.id.cardView);
+//            mReviewPicture = (CardView) findViewById(R.id.cardView_edit_bkgd);
+//            mRecyclerView = (RecyclerView) findViewById(R.id.photo_list);
+//            mReviewMembers = (TextView) findViewById(R.id.photo_members);
+//            mReviewDate = (TextView) findViewById(R.id.photo_date);
+//            mReviewDescription = (TextView) findViewById(R.id.photo_description);
+//            LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+//            mRecyclerView.setLayoutManager(mLinearLayoutManager);
+//            mRecyclerView.setAdapter(photoLargeAdapter);
+//            SnapHelper helper = new LinearSnapHelper();
+//            helper.attachToRecyclerView(mRecyclerView);
+//            mRecyclerView.smoothScrollToPosition(position);
 
 //            mReviewMembers.setText(book.getBookTitle());
 //            mReviewDate.setText(book.getBookId());

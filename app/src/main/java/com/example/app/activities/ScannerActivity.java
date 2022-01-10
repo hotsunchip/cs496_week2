@@ -1,10 +1,14 @@
 package com.example.app.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -18,6 +22,7 @@ import com.example.app.adapters.VPAdapter;
 import com.example.app.fragments.Fragment2;
 import com.example.app.fragments.Fragment_empty;
 import com.example.app.fragments.Fragment_empty3;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -63,6 +68,27 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
         tab.getTabAt(2).setIcon(R.drawable.ic_histories);
 
         tab.getTabAt(1).select();
+
+        FloatingActionButton fab = findViewById(R.id.infoApp);
+        fab.setOnClickListener(new View.OnClickListener() {
+            // floating button을 클릭했을 때
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
+
+                View view2 = LayoutInflater.from(mContext)
+                        .inflate(R.layout.info_app, null);
+                adb.setView(view2);
+
+                AlertDialog finalDialog = adb.create();
+
+                finalDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                finalDialog.setCancelable(true);
+                finalDialog.setView(view2, 0, 0, 0, 0);
+
+                finalDialog.show();
+            }
+        });
     }
 
     //어플리케이션 종료하는 버튼
