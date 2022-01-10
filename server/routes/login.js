@@ -17,7 +17,7 @@ router.get("/signcheck", function (req, res) {
     var resultCode = 404;
     var message = "에러가 발생했습니다.";
     if (error) throw error;
-    var check = 0;
+    var check = false;
     for (let i = 0; i < results.length; i++) {
       if (results[i].userid == checkid) {
         check = true;
@@ -74,3 +74,6 @@ router.delete("/bye", function (req, res) {
   connection.end();
   res.send("delete success");
 });
+
+
+module.exports = router;
