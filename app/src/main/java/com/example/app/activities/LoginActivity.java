@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.APIService;
@@ -43,6 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_in);
 
         Intent intent = getIntent();
+
+        // setting action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mNameView = (EditText) findViewById(R.id.in_name);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.in_email);

@@ -41,3 +41,6 @@ router.get("/heartminus", function (req, res) {
   connection.end();
   res.send("heart- success");
 });
+
+
+module.exports = router;
