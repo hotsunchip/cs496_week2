@@ -31,12 +31,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-
-=======
-    // constants
->>>>>>> 4efadb322e44913a76a3bcf61f122141b610d87e
     public static ArrayList<BookInfo> bookList;
+    public static ArrayList<BookInfo> bookLikeList;
 
     // fields
     private static Context mContext;
@@ -49,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         bookList = new ArrayList<>();
+        bookLikeList = new ArrayList<>();
         setContentView(R.layout.activity_main);
 
 //        Intent intent = getIntent();
@@ -92,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
             setTab(2);
             bringBookInfo();
-            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
-            bookIntent.putExtra("pos", 0);
-            startActivity(bookIntent);
+//            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
+//            bookIntent.putExtra("pos", 0);
+//            startActivity(bookIntent);
         }
     }
 
