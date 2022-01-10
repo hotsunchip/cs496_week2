@@ -5,7 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 //    private static final String SERVER = "http://10.0.2.2:3000/";
-    private static final String TAG = "MainActivityLog";
     public static final String URL = "http://192.249.18.166/";
     private static Retrofit retrofit = null;
 

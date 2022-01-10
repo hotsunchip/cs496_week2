@@ -34,7 +34,7 @@ public class APIService {
         @DELETE("/retrofit/delete/{id}")
         Call<ResponseBody> deleteFunc(@Path("id") String id);
 
-        @POST("/user/login")
+        @POST("/login/signcheck")
         Call<LoginResponse> userLogin(@Body LoginData data);
 
         @POST("/user/join")

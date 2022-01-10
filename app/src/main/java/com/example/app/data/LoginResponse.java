@@ -16,8 +16,8 @@ public class LoginResponse extends ResponseBody {
     @SerializedName("message")
     private String message;
 
-    @SerializedName("userId")
-    private int userId;
+    @SerializedName("userid")
+    private int userid;
 
     public int getCode() {
         return code;
@@ -28,7 +28,7 @@ public class LoginResponse extends ResponseBody {
     }
 
     public int getUserId() {
-        return userId;
+        return userid;
     }
 
     @Override
