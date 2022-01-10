@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -25,6 +26,8 @@ import com.example.app.activities.MainActivity;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.fragments.Fragment3;
+
+import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -77,19 +80,24 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img_thumb;
-        private ImageButton like_btn;
+        private final ImageButton like_btn;
         private ImageButton detail_front_btn;
         private ImageButton detail_back_btn;
-        private CardView card_front;
-        private CardView card_back;
+        private View card_front;
+        private View card_back;
+
+        private TextView card_Title;
+        private TextView card_Author;
+        private TextView card_Rate;
+        private TextView card_Desc;
         public ViewHolder(View convertView) {
             super(convertView);
             img_thumb = (ImageView) convertView.findViewById(R.id.bookCover);
             like_btn = (ImageButton) convertView.findViewById(R.id.bookLikeBtn);
             detail_front_btn = (ImageButton) convertView.findViewById(R.id.bookDetailFrontBtn);
             detail_back_btn = (ImageButton) convertView.findViewById(R.id.bookDetailBackBtn);
-            card_front = (CardView) convertView.findViewById(R.id.bookCardFront);
-            card_back = (CardView) convertView.findViewById(R.id.bookCardBack);
+            card_front = convertView.findViewById(R.id.bookCardFront);
+            card_back = convertView.findViewById(R.id.bookCardBack);
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -128,6 +136,29 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                 }
             });
 
+            detail_front_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    detail_front_btn.setSelected(!detail_front_btn.isSelected());
+                    detail_back_btn.setSelected(!detail_back_btn.isSelected());
+
+                    flipCard(detail_front_btn.isSelected());
+                }
+            });
+
+            detail_back_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    detail_front_btn.setSelected(!detail_front_btn.isSelected());
+                    detail_back_btn.setSelected(!detail_back_btn.isSelected());
+
+                    flipCard(detail_front_btn.isSelected());
+                    like_btn.setClickable(true);
+                }
+            });
+
             like_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -145,28 +176,6 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                     }
                 }
             });
-
-            detail_front_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    detail_front_btn.setSelected(!detail_front_btn.isSelected());
-                    detail_back_btn.setSelected(!detail_front_btn.isSelected());
-
-                    flipCard(detail_front_btn.isSelected());
-                }
-            });
-
-            detail_back_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    detail_front_btn.setSelected(!detail_front_btn.isSelected());
-                    detail_back_btn.setSelected(!detail_front_btn.isSelected());
-
-                    flipCard(detail_front_btn.isSelected());
-                }
-            });
         }
 
         private void flipCard(boolean isflipped) {
@@ -176,10 +185,10 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                 flipCardAction(card_front, card_back);
             }
         }
-        private void flipCardAction(ViewGroup visibleView, ViewGroup invisibleView) {
+        private void flipCardAction(View visibleView, View invisibleView) {
             visibleView.setVisibility(View.VISIBLE);
             float scale = mContext.getResources().getDisplayMetrics().density;
-            float cameraDist = 8000 * scale;
+            float cameraDist = 100000 * scale;
             visibleView.setCameraDistance(cameraDist);
             invisibleView.setCameraDistance(cameraDist);
             AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mContext, R.animator.front_animator);

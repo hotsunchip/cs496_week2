@@ -9,18 +9,25 @@
     android:paddingTop="64dp"
     android:paddingBottom="16dp">
 
-    <androidx.cardview.widget.CardView
+    <FrameLayout
         android:id="@+id/bookCardFront"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardBackgroundColor="@color/off_white"
-        app:cardCornerRadius="@dimen/cardCornerRadius"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="8dp"
+        android:background="@drawable/shadow"
+        android:padding="@dimen/fragment_horizontal_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookCardFront1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadow"
+        app:cardBackgroundColor="@color/off_white"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="0dp"
         android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,11 +82,11 @@
                 android:textColor="@color/text_color"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toStartOf="@id/bookLikeBtn"
-                app:layout_constraintStart_toEndOf="@+id/bookCodeNum"
+                app:layout_constraintStart_toEndOf="@+id/bookRate"
                 app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
 
             <TextView
-                android:id="@+id/bookCodeNum"
+                android:id="@+id/bookRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -107,19 +114,27 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    </FrameLayout>
+    <FrameLayout
         android:id="@+id/bookCardBack"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardBackgroundColor="@color/yellow_000"
-        app:cardCornerRadius="@dimen/cardCornerRadius"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="8dp"
+        android:background="@drawable/shadow"
+        android:padding="@dimen/fragment_horizontal_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookCardBack1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/yellow_000"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="0dp"
+        android:background="@drawable/shadow">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -227,5 +242,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

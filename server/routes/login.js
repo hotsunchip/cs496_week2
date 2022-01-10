@@ -20,7 +20,7 @@ router.get("/signcheck", function (req, res) {
     var check = 0;
     for (let i = 0; i < results.length; i++) {
       if (results[i].userid == checkid) {
-        check = 1;
+        check = true;
         if (results[i].userpw == checkpw) {
           userid = results[i].userid;
           userpw = results[i].userpw;
@@ -35,7 +35,7 @@ router.get("/signcheck", function (req, res) {
         }
       }
     }
-    if (check == 0) {
+    if (!check) {
       resultCode = 204;
       message = "존재하지 않는 계정입니다.";
     }
