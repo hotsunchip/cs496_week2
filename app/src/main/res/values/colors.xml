@@ -17,6 +17,7 @@
     <color name="gray_900">#2B2B2B</color>
     <color name="black">#FF000000</color>
     <color name="transparent">#00000000</color>
+    <color name="translucent">#80FFFFFF</color>
     <color name="off_white">#FFFEFEFE</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_200">#FF4882BF</color>

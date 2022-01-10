@@ -85,3 +85,6 @@ router.delete("/barcodedelete", function (req, res) {
   connection.end();
   res.send("delete success");
 });
+
+
+module.exports = router;
