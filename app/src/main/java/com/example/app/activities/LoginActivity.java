@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 attemptJoin();
             }
         });
-        moveMain();
+//        moveMain();
     }
 
     private void attemptLogin() {
@@ -110,10 +110,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
-                    String result = response.body().getMessage();
-                    Log.v("", "result = " + result);
-                    Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
-                    showProgress(false);
+                    try {
+                        String result = response.body().string();
+                        Log.v("", "result = " + result);
+                        Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
+                        showProgress(false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Log.v("", "error = " + String.valueOf(response.code()));
                     Toast.makeText(LoginActivity.this, "error = " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
