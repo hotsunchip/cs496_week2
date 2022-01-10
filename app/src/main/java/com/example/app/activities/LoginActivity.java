@@ -127,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                     String aboutbook = response.body().getAboutbook();
 
                     String result = "로그인에 성공하였습니다!";
+                    MainActivity.userid = response.body().getUserid();
                     Log.v("", "result = " + result);
                     Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
                     showProgress(false);
@@ -188,6 +189,7 @@ public class LoginActivity extends AppCompatActivity {
             String userid = email;
             String userpw = password;
             String nickname = name;
+            MainActivity.userid = userid;
             startJoin(new JoinData(userid, userpw, nickname));
             showProgress(true);
         }

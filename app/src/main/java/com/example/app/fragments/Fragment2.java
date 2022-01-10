@@ -69,6 +69,13 @@ public class Fragment2 extends Fragment implements DecoratedBarcodeView.TorchLis
         return view;
     }
 
+    //0111
+
+
+
+
+
+
     @Override
     public void onResume() {
         super.onResume();

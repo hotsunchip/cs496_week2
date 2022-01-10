@@ -1,5 +1,7 @@
 package com.example.app;
 
+import com.example.app.data.BarcodeData;
+import com.example.app.data.BarcodeResponse;
 import com.example.app.data.JoinData;
 import com.example.app.data.JoinResponse;
 import com.example.app.data.LoginData;
@@ -39,6 +41,9 @@ public class APIService {
 
         @POST("/login/signcheck")
         Call<LoginResponse> userLogin(@Body LoginData data);
+
+        @POST("/play/barcodecheck")
+        Call<BarcodeResponse> userBarcode(@Body BarcodeData data);
 
     }
 }
