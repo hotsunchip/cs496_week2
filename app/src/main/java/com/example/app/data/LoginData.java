@@ -6,11 +6,7 @@ public class LoginData {
     @SerializedName("userid")
     String userid;
 
-    @SerializedName("userpw")
-    String userpw;
-
-    public LoginData(String userid, String userpw) {
+    public LoginData(String userid) {
         this.userid = userid;
-        this.userid = userpw;
     }
 }
