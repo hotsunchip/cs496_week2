@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/transparent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/cardElevation"
+        app:cardBackgroundColor="@color/yellow_200"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="사용자"
+                android:textAlignment="center"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/textTitleSize"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="englishId"
+                android:textAlignment="center"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/textMidSize"
+                app:layout_constraintBottom_toTopOf="@id/profile_logout"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_name" />
+            <TextView
+                android:id="@+id/profile_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="로그아웃"
+                android:textAlignment="center"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/textMidSize"
+                app:layout_constraintBottom_toTopOf="@id/profile_signout"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_id" />
+            <TextView
+                android:id="@+id/profile_signout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:text="회원탈퇴"
+                android:textAlignment="center"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/textMidSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_logout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

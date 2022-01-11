@@ -85,9 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
     }
 
     @Override
@@ -155,6 +152,23 @@ public class MainActivity extends AppCompatActivity {
                     String paythree = response.body().getPaythree();
                     String payfour = response.body().getPayfour();
                     String aboutbook = response.body().getAboutbook();
+
+                    BookInfo book = new BookInfo();
+                    book.setBookId(codenum);
+                    book.setBookTitle(title);
+                    book.setBookImg(imgbook);
+                    book.setBookAuthor(author);
+                    book.setBookPoint(review);
+                    book.setBookPrice(price);
+                    book.setBookUrl1(payone);
+                    book.setBookUrl2(paytwo);
+                    book.setBookUrl3(paythree);
+                    book.setBookUrl4(payfour);
+                    book.setBookExplain(aboutbook);
+
+                    Fragment3.bookList.add(0, book);
+                    Fragment3.refreshAdapter();
+
 
                     String result = "바코드를 인식하였습니다!";
                     Log.v("", "result = " + result);
