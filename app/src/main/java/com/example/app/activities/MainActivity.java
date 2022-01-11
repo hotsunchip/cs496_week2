@@ -41,6 +41,19 @@ public class MainActivity extends AppCompatActivity {
     public static String userid;
     private ProgressBar mProgressView;
     private APIService.ApiService service;
+    public static String title;
+    public static String author;
+    public static String price;
+    public static String review;
+    public static String love;
+    public static String imgbook;
+    public static String payone;
+    public static String paytwo;
+    public static String paythree;
+    public static String payfour;
+    public static String aboutbook;
+
+
 
     // fields
     private static Context mContext;
@@ -106,9 +119,9 @@ public class MainActivity extends AppCompatActivity {
             //0111
             BookInfos(re);
 //            bringBookInfo();
-//            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
-//            bookIntent.putExtra("pos", 0);
-//            startActivity(bookIntent);
+            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
+            bookIntent.putExtra("pos", 0);
+            startActivity(bookIntent);
         }
     }
 
@@ -155,6 +168,24 @@ public class MainActivity extends AppCompatActivity {
                     String paythree = response.body().getPaythree();
                     String payfour = response.body().getPayfour();
                     String aboutbook = response.body().getAboutbook();
+
+
+
+                    BookInfo book = new BookInfo();
+                    book.setBookId(codenum);
+                    book.setBookTitle(title);
+                    book.setBookImg(imgbook);
+                    book.setBookAuthor(author);
+                    book.setBookPoint(review);
+                    book.setBookPrice(price);
+                    book.setBookUrl1(payone);
+                    book.setBookUrl2(paytwo);
+                    book.setBookUrl3(paythree);
+                    book.setBookUrl4(payfour);
+                    book.setBookExplain(aboutbook);
+
+                    Fragment3.bookList.add(0, book);
+                    Fragment3.refreshAdapter();
 
                     String result = "바코드를 인식하였습니다!";
                     Log.v("", "result = " + result);
