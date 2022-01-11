@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     public static String paythree;
     public static String payfour;
     public static String aboutbook;
+    public static String name;
+    public static String email;
+
 
 
 

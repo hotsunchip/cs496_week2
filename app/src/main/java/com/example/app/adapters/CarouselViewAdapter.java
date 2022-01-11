@@ -118,10 +118,10 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
         private ImageButton detail_back_btn;
         private TextView card_Desc;
         private TextView card_Price;
-        private Button bookBtnKB;
-        private Button bookBtnYP;
-        private Button bookBtnYes24;
-        private Button bookBtnAD;
+        private ImageButton bookBtnKB;
+        private ImageButton bookBtnYP;
+        private ImageButton bookBtnYes24;
+        private ImageButton bookBtnAD;
 
         public ViewHolder(View convertView) {
             super(convertView);
@@ -135,9 +135,9 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             card_Author = (TextView) convertView.findViewById(R.id.bookAuthor);
             card_Rate = (TextView) convertView.findViewById(R.id.bookRate);
 
-            card_Title.setText(LoginActivity.title);
-            card_Author.setText(LoginActivity.author);
-            card_Rate.setText(LoginActivity.review);
+            card_Title.setText(MainActivity.title);
+            card_Author.setText(MainActivity.author);
+            card_Rate.setText(MainActivity.review);
 
 
 
@@ -146,13 +146,13 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             detail_back_btn = (ImageButton) convertView.findViewById(R.id.bookDetailBackBtn);
             card_Desc = (TextView) convertView.findViewById(R.id.bookDesc);
             card_Price = (TextView) convertView.findViewById(R.id.bookPrice);
-            bookBtnKB = (Button) convertView.findViewById(R.id.bookBtnKB);
-            bookBtnYP = (Button) convertView.findViewById(R.id.bookBtnYP);
-            bookBtnYes24 = (Button) convertView.findViewById(R.id.bookBtnYes24);
-            bookBtnAD = (Button) convertView.findViewById(R.id.bookBtnAD);
+            bookBtnKB = (ImageButton) convertView.findViewById(R.id.bookBtnKB);
+            bookBtnYP = (ImageButton) convertView.findViewById(R.id.bookBtnYP);
+            bookBtnYes24 = (ImageButton) convertView.findViewById(R.id.bookBtnYes24);
+            bookBtnAD = (ImageButton) convertView.findViewById(R.id.bookBtnAD);
 
-            card_Desc.setText(LoginActivity.aboutbook);
-            card_Price.setText(LoginActivity.price);
+            card_Desc.setText(MainActivity.aboutbook);
+            card_Price.setText(MainActivity.price);
 
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {

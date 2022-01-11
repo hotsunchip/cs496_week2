@@ -36,6 +36,8 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
     private static Context mContext;
     private long backKeyPressedTime = 0;
     private Toast toast;
+    private TextView profileid;
+    private TextView profilename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +86,35 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
 //            }
 //
 //        });
+
         ImageButton profileBtn = findViewById(R.id.profile_btn);
         profileBtn.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View view) {
                 android.app.AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
 
+
+
                 View view3 = LayoutInflater.from(mContext)
                         .inflate(R.layout.profile, null);
+                profileid = (TextView) view3.findViewById(R.id.profile_id);
+                profilename = (TextView) view3.findViewById(R.id.profile_name);
+                profileid.setText(LoginActivity.email);
+                profilename.setText(LoginActivity.name);
                 adb.setView(view3);
                 final TextView logout = (TextView) view3.findViewById(R.id.profile_logout);
                 final TextView signout = (TextView) view3.findViewById(R.id.profile_signout);
+
+
+
+
+
+
+
+
 
                 AlertDialog finalDialog = adb.create();
 
