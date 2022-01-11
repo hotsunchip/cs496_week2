@@ -2,38 +2,28 @@ package com.example.app.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class VPAdapter extends FragmentPagerAdapter {
+public class VPAdapter extends FragmentStateAdapter {
     private ArrayList<Fragment> items;
-    private ArrayList<String> itext = new ArrayList<String>();
 
-    public VPAdapter(@NonNull FragmentManager fm, ArrayList<Fragment> fragments) {
-        super(fm);
+    public VPAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Fragment> fragments) {
+        super(fragmentActivity);
         items = fragments;
-
-//        itext.add("Friends");
-//        itext.add("BarCode");
-//        itext.add("Histories");
     }
-
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         return items.get(position);
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return items.size();
     }
-
-//    @Nullable
-//    @Override
-//    public CharSequence getPageTitle(int position){
-//        return itext.get(position);
-//    }
 }

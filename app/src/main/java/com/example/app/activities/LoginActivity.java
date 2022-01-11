@@ -8,7 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -30,13 +32,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private AutoCompleteTextView mEmailView;
+    private AutoCompleteTextView mIdView;
     private EditText mPasswordView;
     private EditText mNameView;
-    private Button mEmailLoginButton;
-    private Button mJoinButton;
+    private TextView mLoginJoinTxtBtn;
+    private ImageButton mLoginButton;
     private ProgressBar mProgressView;
     private APIService.ApiService service;
+    private boolean mLoginMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +52,42 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        mLoginMode = true;
         mNameView = (EditText) findViewById(R.id.in_name);
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.in_email);
+        mIdView = (AutoCompleteTextView) findViewById(R.id.in_email);
         mPasswordView = (EditText) findViewById(R.id.in_password);
-        mEmailLoginButton = (Button) findViewById(R.id.login_button);
-        mJoinButton = (Button) findViewById(R.id.join_button);
-        mProgressView = (ProgressBar) findViewById(R.id.login_progress);
+        mLoginButton = (ImageButton) findViewById(R.id.btn_next);
+        mProgressView = (ProgressBar) findViewById(R.id.progress);
+        mLoginJoinTxtBtn = (TextView) findViewById(R.id.login_mode); 
 
         service = RetrofitClient.getClient().create(APIService.ApiService.class);
-
-        mEmailLoginButton.setOnClickListener(new OnClickListener() {
+        mLoginJoinTxtBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                mLoginMode = !mLoginMode;
+                setLoginJoinMode();
             }
         });
-        mJoinButton.setOnClickListener(new OnClickListener() {
+        mLoginButton.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-                attemptJoin();
+            public void onClick(View view) {
+                if (mLoginMode) {
+                    attemptLogin();
+                } else {
+                    attemptJoin();
+                }
             }
         });
+
+        setLoginJoinMode();
 //        moveMain();
     }
 
     private void attemptLogin() {
-        mEmailView.setError(null);
+        mIdView.setError(null);
         mPasswordView.setError(null);
 
-        String email = mEmailView.getText().toString();
+        String email = mIdView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -85,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 패스워드의 유효성 검사
         if (password.isEmpty()) {
-            mEmailView.setError("비밀번호를 입력해주세요.");
-            focusView = mEmailView;
+            mIdView.setError("비밀번호를 입력해주세요.");
+            focusView = mIdView;
             cancel = true;
         } else if (!isPasswordValid(password)) {
             mPasswordView.setError("6자 이상의 비밀번호를 입력해주세요.");
@@ -95,8 +105,8 @@ public class LoginActivity extends AppCompatActivity {
         }
         // 이메일의 유효성 검사
         if (email.isEmpty()) {
-            mEmailView.setError("아이디를 입력해주세요.");
-            focusView = mEmailView;
+            mIdView.setError("아이디를 입력해주세요.");
+            focusView = mIdView;
             cancel = true;
         }
         if (cancel) {
@@ -147,11 +157,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void attemptJoin() {
         mNameView.setError(null);
-        mEmailView.setError(null);
+        mIdView.setError(null);
         mPasswordView.setError(null);
 
         String name = mNameView.getText().toString();
-        String email = mEmailView.getText().toString();
+        String email = mIdView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -159,8 +169,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 패스워드의 유효성 검사
         if (password.isEmpty()) {
-            mEmailView.setError("비밀번호를 입력해주세요.");
-            focusView = mEmailView;
+            mIdView.setError("비밀번호를 입력해주세요.");
+            focusView = mIdView;
             cancel = true;
         } else if (!isPasswordValid(password)) {
             mPasswordView.setError("6자 이상의 비밀번호를 입력해주세요.");
@@ -170,8 +180,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // 이메일의 유효성 검사
         if (email.isEmpty()) {
-            mEmailView.setError("아이디를 입력해주세요.");
-            focusView = mEmailView;
+            mIdView.setError("아이디를 입력해주세요.");
+            focusView = mIdView;
             cancel = true;
         }
 
@@ -224,8 +234,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    private void setLoginJoinMode() {
+        if (mLoginMode) {
+            mNameView.setVisibility(View.GONE);
+            mLoginJoinTxtBtn.setText("회원가입");
+        } else {
+            mNameView.setVisibility(View.VISIBLE);
+            mLoginJoinTxtBtn.setText("로그인");
+        }
+    }
+
     private void moveMain(){
-        MainActivity.setTab(1);
+        MainActivity.setPage(0);
         finish();
     }
 

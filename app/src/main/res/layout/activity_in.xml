@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="@dimen/activity_horizontal_margin"
     android:background="@drawable/login"
     tools:context=".activities.LoginActivity">
 
@@ -13,13 +13,12 @@
         android:id="@+id/login_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/off_white">
+        android:background="@color/transparent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
-            android:layout_width="match_parent"
+            android:id="@+id/id_login_form"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:orientation="vertical">
 
@@ -37,7 +36,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <AutoCompleteTextView
                     android:id="@+id/in_email"
@@ -59,56 +58,42 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-                <ImageButton
-                    android:id="@+id/btn_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_next" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/login_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/textSmallSize"
+                        android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+                        android:paddingVertical="@dimen/fragment_vertical_margin"
+                        android:text="회원가입"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+                    <ImageButton
+                        android:id="@+id/btn_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+                        android:background="@color/transparent"
+                        android:src="@drawable/ic_next" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/login_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:text="로그인"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/join_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:text="회원가입"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/join_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
-
-    <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

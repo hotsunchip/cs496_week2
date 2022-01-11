@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="560dp"
     android:orientation="vertical"
-    android:paddingHorizontal="32dp"
-    android:paddingTop="64dp"
-    android:paddingBottom="16dp">
+    android:paddingHorizontal="42dp"
+    android:paddingTop="84dp"
+    android:paddingBottom="36dp">
 
     <FrameLayout
         android:id="@+id/bookCardFront"
@@ -37,7 +37,7 @@
             <ImageView
                 android:id="@+id/bookCover"
                 android:layout_width="wrap_content"
-                android:layout_height="360dp"
+                android:layout_height="320dp"
                 android:foregroundGravity="bottom"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -162,13 +162,12 @@
                 <TextView
                     android:id="@+id/bookDesc"
                     android:layout_width="match_parent"
-                    android:layout_height="360dp"
+                    android:layout_height="320dp"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="24dp"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="36dp"
                     android:text="전통과 현대의 감각이 만난 새로운 오늘자신만의 역사를 써 내려가는도쿄의 젊은 장인들세상 모든 일이 없어져도살아남을 단 하나의 직업 ‘장인’어제를 기억하는 내일과 가장 가까운 도시, 도쿄스스로 브랜드가 된 젊은 장인들의 일과 삶‘일’이란 무엇일까. 돈을 버는 수단이라는 건조한 사전적 의미를 지우고 나면, 한 사람의 정체성과 셀 수 없이 많은 사연이 숨어 있는 손때 묻은 개인의 역사가 아닐까. 더욱이 요즘, 자신만의 개성과 속도로"
-                    android:textSize="@dimen/textSmallSize"
+                    android:textSize="14dp"
+                    android:lineSpacingExtra="3dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -179,54 +178,57 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:text="이 책의 더 많은 정보 보기"
-                    android:textSize="@dimen/textTinySize"
+                    android:textSize="@dimen/textSmallSize"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/bookDesc" />
+                    app:layout_constraintBottom_toBottomOf="@id/bookDesc" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+                    android:layout_marginVertical="@dimen/fragment_vertical_margin"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/bookBuy">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bookBuy"
+                    tools:layout_editor_absoluteX="8dp">
 
                     <Button
                         android:id="@+id/bookBtnKB"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="4dp"
-                        android:textSize="@dimen/textTinySize"
-                        android:text="교보문고" />
+                        android:layout_weight="1"
+                        android:text="교보문고"
+                        android:textSize="@dimen/textTinySize" />
 
                     <Button
                         android:id="@+id/bookBtnYP"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:layout_marginHorizontal="4dp"
-                        android:textSize="@dimen/textTinySize"
-                        android:text="영풍문고" />
+                        android:layout_weight="1"
+                        android:text="영풍문고"
+                        android:textSize="@dimen/textTinySize" />
 
                     <Button
                         android:id="@+id/bookBtnYes24"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:layout_marginHorizontal="4dp"
-                        android:textSize="@dimen/textTinySize"
-                        android:text="yes24" />
+                        android:layout_weight="1"
+                        android:text="yes24"
+                        android:textSize="@dimen/textTinySize" />
 
                     <Button
                         android:id="@+id/bookBtnAD"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="8dp"
-                        android:textSize="@dimen/textTinySize"
-                        android:text="알라딘" />
+                        android:layout_weight="1"
+                        android:text="알라딘"
+                        android:textSize="@dimen/textTinySize" />
                 </LinearLayout>
 
                 <TextView
@@ -235,7 +237,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                     android:text="12,937 원"
-                    android:textSize="@dimen/textMidSize"
+                    android:textSize="@dimen/textContentSize"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_500"
                     app:layout_constraintBottom_toBottomOf="@+id/bookDesc"
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
