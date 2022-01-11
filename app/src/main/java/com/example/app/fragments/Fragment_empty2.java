@@ -38,19 +38,7 @@ public class Fragment_empty2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_empty, container, false);
+        View view = inflater.inflate(R.layout.fragment_empty2, container, false);
         return view;
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            IntentIntegrator integrator = new IntentIntegrator(getActivity());
-            integrator.setCaptureActivity(ScannerActivity.class);
-            integrator.initiateScan();
-        } else {
-
-        }
     }
 }

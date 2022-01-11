@@ -3,53 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.MainActivity">
-    <LinearLayout
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="SpeakableTextPresentCheck">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                app:tabBackground="@color/gray_000"
-                app:tabIndicator="@null"
-                app:tabSelectedTextColor="@color/gray_900"
-                app:tabTextColor="@color/gray_300">
-                <!--                app:tabIconTint="@color/tab_color_selector"-->
-                <!-- app:tabTextAppearance="@style/TabText">-->
-                <!--            android:background="@color/red_500">-->
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-            </com.google.android.material.tabs.TabLayout>
-        </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
+        tools:ignore="SpeakableTextPresentCheck"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

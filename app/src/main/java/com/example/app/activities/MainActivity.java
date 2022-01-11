@@ -7,13 +7,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.ProgressBar;
+=======
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.BookInfo;
@@ -33,6 +37,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 //0111
 import com.example.app.APIService;
 import com.example.app.R;
@@ -44,6 +49,10 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+=======
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<BookInfo> bookList;
@@ -56,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private static Context mContext;
     private long backKeyPressedTime = 0;
     private Toast toast;
-    private static TabLayout tab;
+    private static ViewPager2 viewPager;
 
 
     @Override
@@ -75,24 +84,26 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        ViewPager vp = findViewById(R.id.viewpager);
+        viewPager = (ViewPager2) findViewById(R.id.viewpager);
 
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new Fragment1());
         fragments.add(new Fragment_empty2());
         fragments.add(new Fragment3());
-        VPAdapter adapter = new VPAdapter(getSupportFragmentManager(), fragments);
-        vp.setAdapter(adapter);
-        // 갤러리를 위한 json file 받기
-        // AssetManager assetManager = getResources().getAssets();
+        VPAdapter adapter = new VPAdapter(this, fragments);
+        viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        viewPager.setAdapter(adapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int pos) {
+                super.onPageSelected(pos);
+                if (pos == 0) {
+                    IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+                    integrator.setCaptureActivity(ScannerActivity.class);
+                    integrator.initiateScan();
+                }
+            }
+        });
 
-        // connect view pager with tab layout
-        tab = findViewById(R.id.tab);
-        tab.setupWithViewPager(vp);
-
-        tab.getTabAt(0).setIcon(R.drawable.ic_friends);
-        tab.getTabAt(1).setIcon(R.drawable.ic_barcode);
-        tab.getTabAt(2).setIcon(R.drawable.ic_histories);
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
     }
@@ -108,12 +119,18 @@ public class MainActivity extends AppCompatActivity {
             CarouselViewAdapter.codenum = re;
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
             setTab(2);
 //            bringBookInfo();
 
             //0111
             BookInfos(re);
 
+=======
+
+            setPage(1);
+            bringBookInfo();
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 //            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
 //            bookIntent.putExtra("pos", 0);
 //            startActivity(bookIntent);
@@ -211,8 +228,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    public static void setTab(int index) {
-        tab.getTabAt(index).select();
+    public static void setPage(int index) {
+        viewPager.setCurrentItem(index);
     }
 
     private void showProgress(boolean show) {

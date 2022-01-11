@@ -39,16 +39,4 @@ public class Fragment_empty extends Fragment{
 //        fillFragment()
         return view;
     }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-        if (isVisibleToUser) {
-            MainActivity.setTab(0);
-            getActivity().finish();
-        } else {
-
-        }
-    }
 }

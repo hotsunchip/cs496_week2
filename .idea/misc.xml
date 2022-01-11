@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable-v24/btn_main.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable-v24/btn_shadow.xml" value="0.153125" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable-v24/ic_heart_basic.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable-v24/ic_heart_filled.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable-v24/ic_heart_focus.xml" value="0.23541666666666666" />
@@ -15,12 +16,13 @@
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable/ic_minus_big_symbol.xml" value="0.403125" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable/image_border.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable/layout_picture.xml" value="0.2109375" />
+        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/drawable/shadow.xml" value="0.153125" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_book.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_custom_scanner.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_in.xml" value="0.1203125" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_join.xml" value="0.36277173913043476" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_login.xml" value="0.36277173913043476" />
-        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_main.xml" value="0.3871808233454924" />
+        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_main.xml" value="0.14" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/activity_scanner.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/book_card.xml" value="0.30760233918128654" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/book_card_delete.xml" value="0.21927083333333333" />
@@ -29,9 +31,11 @@
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_2.xml" value="0.20952380952380953" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_3.xml" value="0.21875" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_empty.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/fragment_empty2.xml" value="0.183203125" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/infoApp.xml" value="0.358695652173913" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/photo_item_large.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/photo_item_small.xml" value="0.21510416666666668" />
+<<<<<<< HEAD
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_in.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_join.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_main.xml" value="0.2907608695652174" />
@@ -42,6 +46,9 @@
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/info_app.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/photo_item_large.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/photo_item_small.xml" value="0.3619791666666667" />
+=======
+        <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2604166666666667" />
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
       </map>
     </option>
   </component>
