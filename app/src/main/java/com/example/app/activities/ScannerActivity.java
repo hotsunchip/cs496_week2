@@ -4,9 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -14,9 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.app.APIService;
 import com.example.app.R;
+import com.example.app.RetrofitClient;
 import com.example.app.adapters.VPAdapter;
 import com.example.app.fragments.Fragment2;
+import com.example.app.fragments.Fragment3;
 import com.example.app.fragments.Fragment_empty3;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -76,7 +84,39 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
 //            }
 //
 //        });
+        ImageButton profileBtn = findViewById(R.id.profile_btn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
 
+                View view3 = LayoutInflater.from(mContext)
+                        .inflate(R.layout.profile, null);
+                adb.setView(view3);
+                final TextView logout = (TextView) view3.findViewById(R.id.profile_logout);
+                final TextView signout = (TextView) view3.findViewById(R.id.profile_signout);
+
+                AlertDialog finalDialog = adb.create();
+
+                finalDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                finalDialog.setCancelable(true);
+                finalDialog.setView(view3, 0, 0, 0, 0);
+
+                logout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finalDialog.dismiss();
+                    }
+                });
+                signout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finalDialog.dismiss();
+                    }
+                });
+                finalDialog.show();
+            }
+        });
         FloatingActionButton fab = findViewById(R.id.infoApp);
         fab.setOnClickListener(new View.OnClickListener() {
             // floating button을 클릭했을 때
