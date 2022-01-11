@@ -7,6 +7,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD
+import android.widget.ProgressBar;
+=======
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -15,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.adapters.VPAdapter;
@@ -32,12 +37,29 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+//0111
+import com.example.app.APIService;
+import com.example.app.R;
+import com.example.app.RetrofitClient;
+import com.example.app.data.BarcodeResponse;
+import com.example.app.data.BarcodeData;
+import java.io.IOException;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+=======
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<BookInfo> bookList;
     public static ArrayList<BookInfo> bookLikeList;
+    public static String userid;
+    private ProgressBar mProgressView;
+    private APIService.ApiService service;
 
     // fields
     private static Context mContext;
@@ -52,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         bookList = new ArrayList<>();
         bookLikeList = new ArrayList<>();
+        mProgressView = (ProgressBar) findViewById(R.id.login_progress);
         setContentView(R.layout.activity_main);
+        service = RetrofitClient.getClient().create(APIService.ApiService.class);
 
 //        Intent intent = getIntent();
 
@@ -92,11 +116,21 @@ public class MainActivity extends AppCompatActivity {
             IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
             String re = scanResult.getContents();
 //            int bookId = Integer.parseInt(re);
+            CarouselViewAdapter.codenum = re;
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
+            setTab(2);
+//            bringBookInfo();
+
+            //0111
+            BookInfos(re);
+
+=======
 
             setPage(1);
             bringBookInfo();
+>>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 //            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
 //            bookIntent.putExtra("pos", 0);
 //            startActivity(bookIntent);
@@ -119,6 +153,51 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment3.bookList.add(0, book);
         Fragment3.refreshAdapter();
+    }
+
+    //0111
+    private void BookInfos(String re) {
+        String barcode = re;
+        String usingid = userid;
+        startBarcode(new BarcodeData(barcode, usingid));
+        showProgress(true);
+    }
+    private void startBarcode(BarcodeData data) {
+        Call<BarcodeResponse> call_barcode = service.userBarcode(data);
+        call_barcode.enqueue(new Callback<BarcodeResponse>() {
+            @Override
+            public void onResponse(Call<BarcodeResponse> call, Response<BarcodeResponse> response) {
+                if (response.isSuccessful()) {
+                    String codenum = response.body().getCodenum();
+                    String title = response.body().getTitle();
+                    String author = response.body().getAuthor();
+                    String price = response.body().getPrice();
+                    String review = response.body().getReview();
+                    String love = response.body().getLove();
+                    String imgbook = response.body().getImgbook();
+                    String payone = response.body().getPayone();
+                    String paytwo = response.body().getPaytwo();
+                    String paythree = response.body().getPaythree();
+                    String payfour = response.body().getPayfour();
+                    String aboutbook = response.body().getAboutbook();
+
+                    String result = "바코드를 인식하였습니다!";
+                    Log.v("", "result = " + result);
+                    Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+                    showProgress(false);
+                } else {
+                    String result ="바코드 인식에 실패하였습니다.";
+                    Log.v("", "error = " + result);
+                    Toast.makeText(MainActivity.this, "error = " + result, Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<BarcodeResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "바코드 에러 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                Log.e("바코드 에러 발생하였습니다.", t.getMessage());
+                showProgress(false);
+            }
+        });
     }
 
 
@@ -151,5 +230,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setPage(int index) {
         viewPager.setCurrentItem(index);
+    }
+
+    private void showProgress(boolean show) {
+        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }
