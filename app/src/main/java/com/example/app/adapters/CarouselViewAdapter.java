@@ -103,25 +103,46 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView img_thumb;
-        private final ImageButton like_btn;
-        private ImageButton detail_front_btn;
-        private ImageButton detail_back_btn;
+        // card front
         private View card_front;
-        private View card_back;
-
+        private ImageButton detail_front_btn;
+        private ImageButton like_btn;
+        private ImageView img_thumb;
         private TextView card_Title;
         private TextView card_Author;
         private TextView card_Rate;
+
+        // card back
+        private View card_back;
+        private ImageButton detail_back_btn;
         private TextView card_Desc;
+        private TextView card_Price;
+        private Button bookBtnKB;
+        private Button bookBtnYP;
+        private Button bookBtnYes24;
+        private Button bookBtnAD;
+
         public ViewHolder(View convertView) {
             super(convertView);
-            img_thumb = (ImageView) convertView.findViewById(R.id.bookCover);
-            like_btn = (ImageButton) convertView.findViewById(R.id.bookLikeBtn);
-            detail_front_btn = (ImageButton) convertView.findViewById(R.id.bookDetailFrontBtn);
-            detail_back_btn = (ImageButton) convertView.findViewById(R.id.bookDetailBackBtn);
+
+            // connect card front
             card_front = convertView.findViewById(R.id.bookCardFront);
+            detail_front_btn = (ImageButton) convertView.findViewById(R.id.bookDetailFrontBtn);
+            like_btn = (ImageButton) convertView.findViewById(R.id.bookLikeBtn);
+            img_thumb = (ImageView) convertView.findViewById(R.id.bookCover);
+            card_Title = (TextView) convertView.findViewById(R.id.bookTitle);
+            card_Author = (TextView) convertView.findViewById(R.id.bookAuthor);
+            card_Rate = (TextView) convertView.findViewById(R.id.bookRate);
+
+            // connect card back
             card_back = convertView.findViewById(R.id.bookCardBack);
+            detail_back_btn = (ImageButton) convertView.findViewById(R.id.bookDetailBackBtn);
+            card_Desc = (TextView) convertView.findViewById(R.id.bookDesc);
+            card_Price = (TextView) convertView.findViewById(R.id.bookPrice);
+            bookBtnKB = (Button) convertView.findViewById(R.id.bookBtnKB);
+            bookBtnYP = (Button) convertView.findViewById(R.id.bookBtnYP);
+            bookBtnYes24 = (Button) convertView.findViewById(R.id.bookBtnYes24);
+            bookBtnAD = (Button) convertView.findViewById(R.id.bookBtnAD);
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -144,7 +165,7 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                     buttonDelete.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mProgressView = (ProgressBar) view.findViewById(R.id.login_progress);
+                            mProgressView = (ProgressBar) view.findViewById(R.id.progress);
                             service = RetrofitClient.getClient().create(APIService.ApiService.class);
                             mDataset.remove(position);
 //                            MainActivity.updateJSONImages(null, position);
@@ -211,7 +232,6 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                 }
             });
         }
-
 
         private void heartplus(String codenum, String userid) {
             String barcodenum = codenum;
@@ -326,8 +346,6 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
         private void showProgress(boolean show) {
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
         }
-
-
 
         private void flipCard(boolean isflipped) {
             if (isflipped) {
