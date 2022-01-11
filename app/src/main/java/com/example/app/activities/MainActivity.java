@@ -3,56 +3,37 @@ package com.example.app.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.ProgressBar;
-=======
->>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.adapters.VPAdapter;
-import com.example.app.fragments.Fragment1;
 import com.example.app.fragments.Fragment3;
 import com.example.app.fragments.Fragment_empty2;
-import com.google.android.material.tabs.TabLayout;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
-<<<<<<< HEAD
 //0111
 import com.example.app.APIService;
 import com.example.app.R;
 import com.example.app.RetrofitClient;
 import com.example.app.data.BarcodeResponse;
 import com.example.app.data.BarcodeData;
-import java.io.IOException;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-=======
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
->>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<BookInfo> bookList;
@@ -71,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         mContext = this;
         bookList = new ArrayList<>();
         bookLikeList = new ArrayList<>();
-        mProgressView = (ProgressBar) findViewById(R.id.login_progress);
-        setContentView(R.layout.activity_main);
+        mProgressView = (ProgressBar) findViewById(R.id.progress);
         service = RetrofitClient.getClient().create(APIService.ApiService.class);
 
 //        Intent intent = getIntent();
@@ -119,18 +101,11 @@ public class MainActivity extends AppCompatActivity {
             CarouselViewAdapter.codenum = re;
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
-            setTab(2);
 //            bringBookInfo();
-
+            setPage(1);
             //0111
             BookInfos(re);
-
-=======
-
-            setPage(1);
-            bringBookInfo();
->>>>>>> 50aa5fc95bc7e4f7012006586e5443a0f557b351
+//            bringBookInfo();
 //            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
 //            bookIntent.putExtra("pos", 0);
 //            startActivity(bookIntent);
