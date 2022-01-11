@@ -24,6 +24,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.app.activities.LoginActivity;
 import com.example.app.activities.MainActivity;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
@@ -134,9 +135,9 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             card_Author = (TextView) convertView.findViewById(R.id.bookAuthor);
             card_Rate = (TextView) convertView.findViewById(R.id.bookRate);
 
-            card_Title.setText(MainActivity.title);
-            card_Author.setText(MainActivity.author);
-            card_Rate.setText(MainActivity.review);
+            card_Title.setText(LoginActivity.title);
+            card_Author.setText(LoginActivity.author);
+            card_Rate.setText(LoginActivity.review);
 
 
 
@@ -150,10 +151,8 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             bookBtnYes24 = (Button) convertView.findViewById(R.id.bookBtnYes24);
             bookBtnAD = (Button) convertView.findViewById(R.id.bookBtnAD);
 
-            card_Desc.setText(MainActivity.aboutbook);
-            card_Price.setText(MainActivity.price);
-
-
+            card_Desc.setText(LoginActivity.aboutbook);
+            card_Price.setText(LoginActivity.price);
 
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
