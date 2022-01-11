@@ -154,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.v("", "result = " + result);
                     Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
                     showProgress(false);
+                    moveMain();
                 } else {
                     String result ="로그인에 실패하였습니다.";
                     Log.v("", "error = " + result);
@@ -230,6 +231,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.v("", "result = " + result);
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                     showProgress(false);
+                    moveMain();
                 } else {
                     String result = "회원가입에 실패하였습니다!";
                     Log.v("", "error = " + result);
