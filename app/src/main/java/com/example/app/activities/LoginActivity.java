@@ -41,17 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar mProgressView;
     private APIService.ApiService service;
     private boolean mLoginMode;
-    public static String title;
-    public static String author;
-    public static String price;
-    public static String review;
-    public static String love;
-    public static String imgbook;
-    public static String payone;
-    public static String paytwo;
-    public static String paythree;
-    public static String payfour;
-    public static String aboutbook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

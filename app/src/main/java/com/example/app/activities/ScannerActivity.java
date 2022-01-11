@@ -106,6 +106,9 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
                     @Override
                     public void onClick(View view) {
                         finalDialog.dismiss();
+                        Intent loginIntent = new Intent(ScannerActivity.this, LoginActivity.class);
+                        startActivity(loginIntent);
+                        finish();
                     }
                 });
                 signout.setOnClickListener(new View.OnClickListener() {
