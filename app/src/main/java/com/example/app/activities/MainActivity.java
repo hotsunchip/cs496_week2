@@ -41,6 +41,19 @@ public class MainActivity extends AppCompatActivity {
     public static String userid;
     private ProgressBar mProgressView;
     private APIService.ApiService service;
+    public static String title;
+    public static String author;
+    public static String price;
+    public static String review;
+    public static String love;
+    public static String imgbook;
+    public static String payone;
+    public static String paytwo;
+    public static String paythree;
+    public static String payfour;
+    public static String aboutbook;
+
+
 
     // fields
     private static Context mContext;
@@ -103,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
             //0111
             BookInfos(re);
 //            bringBookInfo();
-//            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
-//            bookIntent.putExtra("pos", 0);
-//            startActivity(bookIntent);
+            Intent bookIntent = new Intent(MainActivity.this, BookActivity.class);
+            bookIntent.putExtra("pos", 0);
+            startActivity(bookIntent);
         }
     }
 
@@ -153,6 +166,11 @@ public class MainActivity extends AppCompatActivity {
                     String payfour = response.body().getPayfour();
                     String aboutbook = response.body().getAboutbook();
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> c012cfff781108375ce936f0df925accba24a869
                     BookInfo book = new BookInfo();
                     book.setBookId(codenum);
                     book.setBookTitle(title);
@@ -169,7 +187,10 @@ public class MainActivity extends AppCompatActivity {
                     Fragment3.bookList.add(0, book);
                     Fragment3.refreshAdapter();
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> c012cfff781108375ce936f0df925accba24a869
                     String result = "바코드를 인식하였습니다!";
                     Log.v("", "result = " + result);
                     Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();

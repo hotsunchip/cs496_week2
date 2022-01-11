@@ -134,6 +134,12 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             card_Author = (TextView) convertView.findViewById(R.id.bookAuthor);
             card_Rate = (TextView) convertView.findViewById(R.id.bookRate);
 
+            card_Title.setText(MainActivity.title);
+            card_Author.setText(MainActivity.author);
+            card_Rate.setText(MainActivity.review);
+
+
+
             // connect card back
             card_back = convertView.findViewById(R.id.bookCardBack);
             detail_back_btn = (ImageButton) convertView.findViewById(R.id.bookDetailBackBtn);
@@ -143,6 +149,12 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             bookBtnYP = (Button) convertView.findViewById(R.id.bookBtnYP);
             bookBtnYes24 = (Button) convertView.findViewById(R.id.bookBtnYes24);
             bookBtnAD = (Button) convertView.findViewById(R.id.bookBtnAD);
+
+            card_Desc.setText(MainActivity.aboutbook);
+            card_Price.setText(MainActivity.price);
+
+
+
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

@@ -44,7 +44,7 @@ public class BookActivity extends AppCompatActivity {
 
 //            Intent intent = getIntent();
 //            position = intent.getIntExtra("pos", 0);
-////            BookInfo book = MainActivity.bookList.get(bookId);
+//            BookInfo book = MainActivity.bookList.get(bookId);
 ////            BookInfo book = createBookInfo();
 ////            Fragment3.bookList.add(0, book);
 //
@@ -69,7 +69,7 @@ public class BookActivity extends AppCompatActivity {
 //            SnapHelper helper = new LinearSnapHelper();
 //            helper.attachToRecyclerView(mRecyclerView);
 //            mRecyclerView.smoothScrollToPosition(position);
-
+//
 //            mReviewMembers.setText(book.getBookTitle());
 //            mReviewDate.setText(book.getBookId());
 //            mReviewDescription.setText(book.getBookExplain());

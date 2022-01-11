@@ -40,8 +40,28 @@
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/infoApp.xml" value="0.358695652173913" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/photo_item_large.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/photo_item_small.xml" value="0.21510416666666668" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_book.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_custom_scanner.xml" value="0.17603850050658562" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_in.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_join.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_main.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/activity_scanner.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/book_card.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/book_card_delete.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/custom_barcode_scanner.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/fragment_1.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/fragment_2.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/fragment_3.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/fragment_empty.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/fragment_empty2.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/info_app.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/photo_item_large.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/seank/AndroidStudioProjects/Week2/app/src/main/res/layout/photo_item_small.xml" value="0.3619791666666667" />
+=======
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/layout/profile.xml" value="0.1421193573068095" />
         <entry key="..\:/Users/hotsu/cs496/week2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2604166666666667" />
+>>>>>>> c012cfff781108375ce936f0df925accba24a869
       </map>
     </option>
   </component>
