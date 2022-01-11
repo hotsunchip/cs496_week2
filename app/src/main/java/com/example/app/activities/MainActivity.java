@@ -166,11 +166,6 @@ public class MainActivity extends AppCompatActivity {
                     String payfour = response.body().getPayfour();
                     String aboutbook = response.body().getAboutbook();
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c012cfff781108375ce936f0df925accba24a869
                     BookInfo book = new BookInfo();
                     book.setBookId(codenum);
                     book.setBookTitle(title);
@@ -187,10 +182,6 @@ public class MainActivity extends AppCompatActivity {
                     Fragment3.bookList.add(0, book);
                     Fragment3.refreshAdapter();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c012cfff781108375ce936f0df925accba24a869
                     String result = "바코드를 인식하였습니다!";
                     Log.v("", "result = " + result);
                     Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
