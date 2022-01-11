@@ -5,7 +5,9 @@ import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -137,9 +139,27 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
 
             card_Title.setText(MainActivity.title);
             card_Author.setText(MainActivity.author);
-            card_Rate.setText(MainActivity.review);
-
-
+            int rate = Math.round(Float.parseFloat(MainActivity.review));
+            switch (rate) {
+                case 10: case 9:
+                    card_Rate.setText("★★★★★ " + MainActivity.review + " | ");
+                    break;
+                case 8: case 7:
+                    card_Rate.setText("★★★★☆ " + MainActivity.review + " | ");
+                    break;
+                case 6: case 5:
+                    card_Rate.setText("★★★☆☆ " + MainActivity.review + " | ");
+                    break;
+                case 4: case 3:
+                    card_Rate.setText("★★☆☆☆ " + MainActivity.review + " | ");
+                    break;
+                case 2: case 1:
+                    card_Rate.setText("★☆☆☆☆ " + MainActivity.review + " | ");
+                    break;
+                case 0:
+                    card_Rate.setText("☆☆☆☆☆ " + MainActivity.review + " | ");
+                    break;
+            }
 
             // connect card back
             card_back = convertView.findViewById(R.id.bookCardBack);
@@ -153,6 +173,38 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
 
             card_Desc.setText(MainActivity.aboutbook);
             card_Price.setText(MainActivity.price);
+            bookBtnKB.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                @Override
+                public void onClick(View view) {
+                    intent.setData(Uri.parse(MainActivity.payone));
+                    mContext.startActivity(intent);
+                }
+            });
+            bookBtnYP.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                @Override
+                public void onClick(View view) {
+                    intent.setData(Uri.parse(MainActivity.paytwo));
+                    mContext.startActivity(intent);
+                }
+            });
+            bookBtnYes24.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                @Override
+                public void onClick(View view) {
+                    intent.setData(Uri.parse(MainActivity.paythree));
+                    mContext.startActivity(intent);
+                }
+            });
+            bookBtnAD.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                @Override
+                public void onClick(View view) {
+                    intent.setData(Uri.parse(MainActivity.payfour));
+                    mContext.startActivity(intent);
+                }
+            });
 
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
