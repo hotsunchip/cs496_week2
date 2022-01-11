@@ -2,6 +2,12 @@ package com.example.app;
 
 import com.example.app.data.BarcodeData;
 import com.example.app.data.BarcodeResponse;
+import com.example.app.data.ByeData;
+import com.example.app.data.ByeResponse;
+import com.example.app.data.HeartdownData;
+import com.example.app.data.HeartdownResponse;
+import com.example.app.data.HeartupData;
+import com.example.app.data.HeartupResponse;
 import com.example.app.data.JoinData;
 import com.example.app.data.JoinResponse;
 import com.example.app.data.LoginData;
@@ -44,6 +50,16 @@ public class APIService {
 
         @POST("/play/barcodecheck")
         Call<BarcodeResponse> userBarcode(@Body BarcodeData data);
+
+        @POST("/play/barcodedelete")
+        Call<ByeResponse> userBye(@Body ByeData data);
+
+        @POST("/heart/heartplus")
+        Call<HeartupResponse> userHeartup(@Body HeartupData data);
+
+        @POST("/heart/heartminus")
+        Call<HeartdownResponse> userHeartdown(@Body HeartdownData data);
+
 
     }
 }

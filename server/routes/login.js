@@ -72,8 +72,10 @@ router.delete("/bye", function (req, res) {
     console.log(rows);
   });
   connection.end();
-  res.send("delete success");
+  res.json({
+    code: 200,
+    message: "삭제 성공했습니다.",
+  });
 });
-
 
 module.exports = router;

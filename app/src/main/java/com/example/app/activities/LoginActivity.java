@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.app.APIService;
 import com.example.app.R;
 import com.example.app.RetrofitClient;
+import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.JoinData;
 import com.example.app.data.JoinResponse;
 import com.example.app.data.LoginData;
@@ -128,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     String result = "로그인에 성공하였습니다!";
                     MainActivity.userid = response.body().getUserid();
+                    CarouselViewAdapter.userid = response.body().getUserid();
                     Log.v("", "result = " + result);
                     Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
                     showProgress(false);

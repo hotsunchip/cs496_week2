@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.app.adapters.CarouselViewAdapter;
 import com.example.app.data.BookInfo;
 import com.example.app.R;
 import com.example.app.adapters.VPAdapter;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
             String re = scanResult.getContents();
 //            int bookId = Integer.parseInt(re);
+            CarouselViewAdapter.codenum = re;
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
             setTab(2);
@@ -144,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
         showProgress(true);
     }
     private void startBarcode(BarcodeData data) {
-        Call<BarcodeResponse> call_login = service.userBarcode(data);
-        call_login.enqueue(new Callback<BarcodeResponse>() {
+        Call<BarcodeResponse> call_barcode = service.userBarcode(data);
+        call_barcode.enqueue(new Callback<BarcodeResponse>() {
             @Override
             public void onResponse(Call<BarcodeResponse> call, Response<BarcodeResponse> response) {
                 if (response.isSuccessful()) {
