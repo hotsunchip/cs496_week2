@@ -16,14 +16,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app.R;
+import com.example.app.adapters.OnSwipeTouchListener;
 import com.example.app.adapters.VPAdapter;
 import com.example.app.fragments.Fragment2;
 import com.example.app.fragments.Fragment_empty;
 import com.example.app.fragments.Fragment_empty3;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
@@ -48,26 +51,41 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        ViewPager vp = findViewById(R.id.viewpager);
+        ViewPager2 vp = findViewById(R.id.viewpager);
 
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new Fragment_empty());
         fragments.add(new Fragment2());
         fragments.add(new Fragment_empty3());
-        VPAdapter adapter = new VPAdapter(getSupportFragmentManager(), fragments);
+        VPAdapter adapter = new VPAdapter(this, fragments);
+        vp.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
         vp.setAdapter(adapter);
-        // 갤러리를 위한 json file 받기
-        // AssetManager assetManager = getResources().getAssets();
+        vp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int pos) {
+                super.onPageSelected(pos);
+                if (pos == 1) {
+                    MainActivity.setPage(1);
+                    finish();
+                }
+            }
+        });
 
-        // connect view pager with tab layout
-        TabLayout tab = findViewById(R.id.tab);
-
-        tab.setupWithViewPager(vp);
-
-        tab.getTabAt(0).setIcon(R.drawable.ic_friends);
-        tab.getTabAt(2).setIcon(R.drawable.ic_histories);
-
-        tab.getTabAt(1).select();
+//        relativeLayout = (RelativeLayout) findViewById(R.id.content_main);
+//        relativeLayout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+//            public void onSwipeTop() {
+//                Toast.makeText(MainActivity.this, "top", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeRight() {
+//                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeLeft() {
+//                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeBottom() {
+//                Toast.makeText(MainActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
 
         FloatingActionButton fab = findViewById(R.id.infoApp);
         fab.setOnClickListener(new View.OnClickListener() {

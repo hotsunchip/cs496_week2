@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/yellow_200"
+    android:background="@drawable/bkgd_code"
     tools:context=".fragments.Fragment2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="360dp"
             android:layout_marginVertical="32dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toTopOf="parent"

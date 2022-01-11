@@ -43,7 +43,7 @@ public class Fragment_empty3 extends Fragment{
         super.setUserVisibleHint(isVisibleToUser);
 
         if (isVisibleToUser) {
-            MainActivity.setTab(2);
+            MainActivity.setPage(1);
             getActivity().finish();
         } else {
 

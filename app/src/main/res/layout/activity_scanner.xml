@@ -13,61 +13,19 @@
         android:clickable="true"
         android:src="@drawable/ic_baseline_info_24"
         app:tint="@null"
-        app:maxImageSize="48dp"
-        app:backgroundTint="@color/green_500"
+        app:maxImageSize="40dp"
+        app:backgroundTint="@color/gray_200"
+        app:fabSize="mini"
         android:elevation="0dp"
-        android:layout_marginBottom="@dimen/fab_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        android:layout_margin="@dimen/fab_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="SpeakableTextPresentCheck">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                app:tabBackground="@color/gray_000"
-                app:tabIndicator="@null"
-                app:tabSelectedTextColor="@color/gray_900"
-                app:tabTextColor="@color/gray_300">
-                <!--                app:tabIconTint="@color/tab_color_selector"-->
-                <!-- app:tabTextAppearance="@style/TabText">-->
-                <!--            android:background="@color/red_500">-->
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin" />
-            </com.google.android.material.tabs.TabLayout>
-        </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
