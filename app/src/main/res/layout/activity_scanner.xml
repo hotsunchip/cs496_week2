@@ -28,4 +28,16 @@
         android:layout_height="match_parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+
+    <ImageButton
+        android:id="@+id/profile_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_smile"
+        android:clickable="true"
+        android:layout_margin="24dp"
+        android:background="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

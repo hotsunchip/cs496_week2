@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in);
 
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
 
         // setting action bar
         ActionBar actionBar = getSupportActionBar();
@@ -250,7 +250,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void moveMain(){
-        MainActivity.setPage(0);
+        Intent startApp = new Intent(this, MainActivity.class);
+        startActivity(startApp);
         finish();
     }
 
