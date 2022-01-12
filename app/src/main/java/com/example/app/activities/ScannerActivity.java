@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +24,24 @@ import com.example.app.APIService;
 import com.example.app.R;
 import com.example.app.RetrofitClient;
 import com.example.app.adapters.VPAdapter;
+import com.example.app.data.BookInfo;
 import com.example.app.fragments.Fragment2;
 import com.example.app.fragments.Fragment3;
 import com.example.app.fragments.Fragment_empty3;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
@@ -102,19 +116,10 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
                         .inflate(R.layout.profile, null);
                 profileid = (TextView) view3.findViewById(R.id.profile_id);
                 profilename = (TextView) view3.findViewById(R.id.profile_name);
-                profileid.setText(LoginActivity.email);
-                profilename.setText(LoginActivity.name);
+                profileid.setText(MainActivity.userid);
                 adb.setView(view3);
                 final TextView logout = (TextView) view3.findViewById(R.id.profile_logout);
                 final TextView signout = (TextView) view3.findViewById(R.id.profile_signout);
-
-
-
-
-
-
-
-
 
                 AlertDialog finalDialog = adb.create();
 
@@ -126,6 +131,11 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
                     @Override
                     public void onClick(View view) {
                         finalDialog.dismiss();
+
+                        String fileName = "user.json";
+                        File file = new File(getFilesDir(), fileName);
+                        file.delete();
+
                         Intent loginIntent = new Intent(ScannerActivity.this, LoginActivity.class);
                         startActivity(loginIntent);
                         finish();
@@ -135,6 +145,9 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
                     @Override
                     public void onClick(View view) {
                         finalDialog.dismiss();
+                        Intent loginIntent = new Intent(ScannerActivity.this, LoginActivity.class);
+                        startActivity(loginIntent);
+                        finish();
                     }
                 });
                 finalDialog.show();
@@ -187,6 +200,89 @@ public class ScannerActivity extends AppCompatActivity { //implements DecoratedB
     protected void onResume() {
         this.overridePendingTransition(0, 0);
         super.onResume();
+    }
+
+    public static void updateBookList(BookInfo book, int position) {
+        JsonRead jr = new JsonRead();
+        JSONObject jo = jr.reading(mContext, "user" +
+                ".json");
+        FileInputStream fis = null;
+        String fileName = "" + MainActivity.userid + ".json";
+        try {
+            fis = mContext.openFileInput(fileName);
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(fis, StandardCharsets.UTF_8);
+            StringBuilder stringBuilder = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                String line = reader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append('\n');
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                // Error occurred when opening raw file for reading.
+            } finally {
+                String contents = stringBuilder.toString();
+                jo = new JSONObject(contents);
+            }
+        } catch (FileNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONArray ja = jo.getJSONArray("Books");
+            if (position < 0) {
+                JSONObject jsonObject = new JSONObject();//배열 내에 들어갈 json
+                jsonObject.put("codenum", book.getBookId());
+                jsonObject.put("title", book.getBookTitle());
+                jsonObject.put("author", book.getBookAuthor());
+                jsonObject.put("price", book.getBookPrice());
+                jsonObject.put("review", book.getBookPoint());
+                jsonObject.put("love", "false");
+                jsonObject.put("img", book.getBookImg());
+                jsonObject.put("payone", book.getBookUrl1());
+                jsonObject.put("paytwo", book.getBookUrl2());
+                jsonObject.put("paythree", book.getBookUrl3());
+                jsonObject.put("payfour", book.getBookUrl4());
+                jsonObject.put("aboutbook", book.getBookExplain());
+                ja.put(jsonObject);
+                Log.e("newAdded", String.valueOf(ja.length()));
+            } else {
+                if (book != null) {
+                    JSONObject jsonObject = new JSONObject();//배열 내에 들어갈 json
+                    jsonObject.put("codenum", book.getBookId());
+                    jsonObject.put("title", book.getBookTitle());
+                    jsonObject.put("author", book.getBookAuthor());
+                    jsonObject.put("price", book.getBookPrice());
+                    jsonObject.put("review", book.getBookPoint());
+                    jsonObject.put("love", "false");
+                    jsonObject.put("img", book.getBookImg());
+                    jsonObject.put("payone", book.getBookUrl1());
+                    jsonObject.put("paytwo", book.getBookUrl2());
+                    jsonObject.put("paythree", book.getBookUrl3());
+                    jsonObject.put("payfour", book.getBookUrl4());
+                    jsonObject.put("aboutbook", book.getBookExplain());
+                    ja.put(ja.length() - position - 1, jsonObject);
+                    Log.e("newAdded", String.valueOf(ja.length()));
+                } else {
+                    ja.remove(ja.length() - position - 1);
+                    Log.e("deleted", String.valueOf(ja.length()));
+                }
+            }
+            jo.put("Reviews", ja);
+
+            try {
+                FileOutputStream fileOutputStream = mContext.openFileOutput(fileName, Context.MODE_PRIVATE);
+                //Convert JSON String to Bytes and write() it
+                fileOutputStream.write(jo.toString().getBytes());
+                //Finally flush and close FileOutputStream
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

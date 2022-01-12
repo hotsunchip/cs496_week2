@@ -10,6 +10,7 @@ public class BookInfo {
     private String bookAuthor;
     private String bookPrice;
     private String bookPoint;
+    private String bookLove;
     private String bookImg;
     private String bookUrl1;
     private String bookUrl2;
@@ -60,6 +61,12 @@ public class BookInfo {
     }
     public void setBookPoint(String bookPoint) {
         this.bookPoint = bookPoint;
+    }
+    public String getBookLove() {
+        return bookLove;
+    }
+    public void setBookLove(String bookLove) {
+        this.bookLove = bookLove;
     }
     public String getBookImg() {
         return bookImg;

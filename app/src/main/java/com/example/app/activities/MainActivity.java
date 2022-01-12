@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
     public static String paythree;
     public static String payfour;
     public static String aboutbook;
-    public static String name;
-    public static String email;
 
 
 
@@ -178,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     book.setBookAuthor(author);
                     book.setBookPoint(review);
                     book.setBookPrice(price);
+                    book.setBookLove(love);
                     book.setBookUrl1(payone);
                     book.setBookUrl2(paytwo);
                     book.setBookUrl3(paythree);
@@ -185,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     book.setBookExplain(aboutbook);
 
                     MainActivity.bookList.add(0, book);
+                    ScannerActivity.updateBookList(book, -1);
                     Fragment3.refreshAdapter();
 
                     String result = "바코드를 인식하였습니다!";

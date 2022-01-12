@@ -1,6 +1,10 @@
 package com.example.app.adapters;
 
+import static java.lang.Integer.parseInt;
+
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -42,6 +46,7 @@ import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import com.example.app.APIService;
@@ -172,16 +177,9 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             bookBtnAD = (ImageButton) convertView.findViewById(R.id.bookBtnAD);
 
             card_Desc.setText(MainActivity.aboutbook);
-            card_Price.setText(MainActivity.price);
+            DecimalFormat df = new DecimalFormat("#,###");
+            card_Price.setText(df.format(parseInt(MainActivity.price))+"원");
             bookBtnKB.setOnClickListener(new View.OnClickListener() {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                @Override
-                public void onClick(View view) {
-                    intent.setData(Uri.parse(MainActivity.payone));
-                    mContext.startActivity(intent);
-                }
-            });
-            bookBtnYP.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 @Override
                 public void onClick(View view) {
@@ -189,11 +187,19 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                     mContext.startActivity(intent);
                 }
             });
+            bookBtnYP.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                @Override
+                public void onClick(View view) {
+                    intent.setData(Uri.parse(MainActivity.payfour));
+                    mContext.startActivity(intent);
+                }
+            });
             bookBtnYes24.setOnClickListener(new View.OnClickListener() {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 @Override
                 public void onClick(View view) {
-                    intent.setData(Uri.parse(MainActivity.paythree));
+                    intent.setData(Uri.parse(MainActivity.payone));
                     mContext.startActivity(intent);
                 }
             });
@@ -201,7 +207,7 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 @Override
                 public void onClick(View view) {
-                    intent.setData(Uri.parse(MainActivity.payfour));
+                    intent.setData(Uri.parse(MainActivity.paythree));
                     mContext.startActivity(intent);
                 }
             });
@@ -228,15 +234,15 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                     buttonDelete.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mProgressView = (ProgressBar) view.findViewById(R.id.progress);
-                            service = RetrofitClient.getClient().create(APIService.ApiService.class);
+//                            mProgressView = (ProgressBar) view.findViewById(R.id.progress);
+//                            service = RetrofitClient.getClient().create(APIService.ApiService.class);
                             mDataset.remove(position);
 //                            MainActivity.updateJSONImages(null, position);
                             Fragment3.refreshAdapter();
                             finalDialog.dismiss();
 
                             //0111
-                            byebye(userid, codenum);
+//                            byebye(userid, codenum);
                         }
                     });
                     buttonCancel.setOnClickListener(new View.OnClickListener() {
@@ -283,14 +289,14 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
                         MainActivity.bookLikeList.add(mDataset.get(position));
                         Log.e("Book Added", String.valueOf(MainActivity.bookLikeList.size()));
                         Log.e("List", MainActivity.bookLikeList.toString());
-                        //0111
-                        heartplus(codenum, userid);
+//                        //0111
+//                        heartplus(codenum, userid);
                     } else {
                         MainActivity.bookLikeList.remove(mDataset.get(position));
                         Log.e("Book Removed", String.valueOf(MainActivity.bookLikeList.size()));
                         Log.e("List", MainActivity.bookLikeList.toString());
-                        //0111
-                        heartminus(codenum, userid);
+//                        //0111
+//                        heartminus(codenum, userid);
                     }
                 }
             });
@@ -425,11 +431,18 @@ public class CarouselViewAdapter extends RecyclerView.Adapter<CarouselViewAdapte
             invisibleView.setCameraDistance(cameraDist);
             AnimatorSet flipOutAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mContext, R.animator.front_animator);
             flipOutAnimatorSet.setTarget(invisibleView);
+            flipOutAnimatorSet.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    invisibleView.setVisibility(View.GONE);
+                }
+            });
+
             AnimatorSet flipInAnimatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(mContext, R.animator.back_animator);
             flipInAnimatorSet.setTarget(visibleView);
             flipOutAnimatorSet.start();
             flipInAnimatorSet.start();
-//            invisibleView.setVisibility(View.GONE);
         }
     }
 
