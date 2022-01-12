@@ -193,6 +193,16 @@
                     tools:layout_editor_absoluteX="8dp">
 
                     <ImageButton
+                        android:id="@+id/bookBtnYes24"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/bookyes"
+                        android:background="@color/white"
+                        android:scaleType="centerInside"
+                        android:textSize="@dimen/textTinySize" />
+                    <ImageButton
                         android:id="@+id/bookBtnKB"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -200,28 +210,6 @@
                         android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         android:src="@drawable/bookkb"
-                        android:background="@color/white"
-                        android:scaleType="centerInside"
-                        android:textSize="@dimen/textTinySize" />
-
-                    <ImageButton
-                        android:id="@+id/bookBtnYP"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="4dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/bookyp"
-                        android:background="@color/white"
-                        android:scaleType="centerInside"
-                        android:textSize="@dimen/textTinySize" />
-
-                    <ImageButton
-                        android:id="@+id/bookBtnYes24"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="4dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/bookyes"
                         android:background="@color/white"
                         android:scaleType="centerInside"
                         android:textSize="@dimen/textTinySize" />
@@ -237,6 +225,20 @@
                         android:background="@color/white"
                         android:scaleType="centerInside"
                         android:textSize="@dimen/textTinySize" />
+                    <ImageButton
+                        android:id="@+id/bookBtnYP"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/bookyp"
+                        android:background="@color/white"
+                        android:scaleType="centerInside"
+                        android:textSize="@dimen/textTinySize" />
+
+
+
+
                 </LinearLayout>
 
                 <TextView
